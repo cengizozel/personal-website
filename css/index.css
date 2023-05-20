@@ -75,19 +75,19 @@ body {
 @media screen and (max-width: 1200px) {
     
     .name-box {
-        width: 100%;
+        width: 80%;
         padding-left: 20px;
         padding-right: 20px;
         font-size: 48px;
     }
     .about-box {
-        width: 100%;
+        width: 80%;
         padding-left: 20px;
         padding-right: 20px;
-        font-size: 32px;
+        font-size: 36px;
     }
     .contact-box {
-        width: 100%;
+        width: 80%;
         padding-left: 20px;
         padding-right: 20px;
         font-size: 48px;
