@@ -1,0 +1,33 @@
+body {
+    color: #F0F0F0;
+}
+
+.articles-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.article {
+    border-bottom: 1px solid #666666;
+    padding: 20px 0;
+}
+
+.article h2 {
+    color: #F0F0F0;
+    margin-bottom: 10px;
+}
+
+.article h2 a {
+    text-decoration: none;
+    color: #F0F0F0;
+}
+
+.article h2 a:hover, .article h2 a:focus {
+    color: #FF6347;
+}
+
+.article p {
+    color: #C0C0C0;
+    margin-bottom: 10px;
+}
