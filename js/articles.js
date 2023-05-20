@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const articleElement = document.createElement("div");
                 articleElement.classList.add("article"); // Add the article class
 
-                const titleElement = document.createElement("h2");
+                const titleElement = document.createElement("div");
+                titleElement.classList.add("article-title");
 
                 const linkElement = document.createElement("a");
                 linkElement.href = "articles/" + article.link;

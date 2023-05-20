@@ -10,22 +10,29 @@ body {
     padding-right: 20px;
 }
 
+.my-articles {
+    font-size: 32px;
+    font-weight: bold;
+}
+
 .article {
     border-bottom: 1px solid #666666;
     padding: 20px 0;
 }
 
-.article h2 {
+.article-title {
     color: #F0F0F0;
     margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.article h2 a {
+.article-title a {
     text-decoration: none;
     color: #F0F0F0;
 }
 
-.article h2 a:hover, .article h2 a:focus {
+.article-title a:hover, .article h2 a:focus {
     color: #FF6347;
 }
 
@@ -36,6 +43,15 @@ body {
 
 @media screen and (max-width: 1200px) {
     .articles-container {
-        padding-top: 100px;
+        padding-top: 125px;
+    }
+    .my-articles {
+        font-size: 48px;
+    }
+    .article-title {
+        font-size: 32px;
+    }
+    .article p {
+        font-size: 24px;
     }
 }
