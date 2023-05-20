@@ -1,8 +1,12 @@
-[
-    {
-        "title": "Introduction",
-        "description": "This is an introduction",
-        "publishedDate": "2023-05-20",
-        "link": "article_1.html"
-    }
-]
+{
+    "articles":
+    [
+        {
+            "id": "1",
+            "title": "Introduction",
+            "description": "This is an introduction",
+            "publishedDate": "2023-05-20",
+            "link": "article_1.html"
+        }
+    ]
+}

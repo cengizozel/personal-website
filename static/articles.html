@@ -14,48 +14,8 @@
 
         <div class="articles-container">
             <h1>My Articles</h1>
-            <div class="article">
-                <h2><a href="articles/article_1.html">Introduction</a></h2>
-                <p>This is an introduction</p>
-                <p>Published on <time datetime="2023-05-18">20 May 2023</time></p>
-            </div>
-            <!-- repeat for each article -->
         </div>
-        <script>
-            // Fetch the JSON file
-            fetch('../files/articles.json')
-              .then(response => response.json()) // Parse the response as JSON
-              .then(articles => {
-                // Get the container element
-                const container = document.getElementById('articles-container');
-          
-                // Loop through the articles and create the article elements
-                articles.forEach(article => {
-                  // Create the elements
-                  const articleElement = document.createElement('div');
-                  const titleElement = document.createElement('h2');
-                  const linkElement = document.createElement('a');
-                  const descriptionElement = document.createElement('p');
-                  const publishedDateElement = document.createElement('p');
-          
-                  // Set the article details
-                  linkElement.href = article.link;
-                  linkElement.textContent = article.title;
-                  descriptionElement.textContent = article.description;
-                  publishedDateElement.innerHTML = 'Published on <time datetime="' + article.publishedDate + '">' + article.publishedDate + '</time>';
-          
-                  // Append the elements to the article container
-                  articleElement.appendChild(titleElement);
-                  titleElement.appendChild(linkElement);
-                  articleElement.appendChild(descriptionElement);
-                  articleElement.appendChild(publishedDateElement);
-                  container.appendChild(articleElement);
-                });
-              })
-              .catch(error => {
-                console.error('Error loading articles:', error);
-              });
-          </script>
+        <script src="../js/articles.js"></script>
     </body>
     <footer>
         <!-- <small class="under-development-text">This website is under development</small> -->
