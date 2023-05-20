@@ -1,16 +1,14 @@
-{
-    "articles": [
-        {
-            "title": "Article 1 Title",
-            "description": "Short description of Article 1...",
-            "publishedDate": "2023-05-19",
-            "link": "link-to-article-1.html"
-        },
-        {
-            "title": "First post here!",
-            "description": "This is about a first post of mine here",
-            "publishedDate": "2023-05-18",
-            "link": "article-1.html"
-        }
-    ]
-}
+[
+    {
+        "title": "Article 1 Title",
+        "description": "Short description of Article 1...",
+        "publishedDate": "2023-05-19",
+        "link": "link-to-article-1.html"
+    },
+    {
+        "title": "First post here!",
+        "description": "This is about a first post of mine here",
+        "publishedDate": "2023-05-18",
+        "link": "article-1.html"
+    }
+]
