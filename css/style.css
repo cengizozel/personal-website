@@ -4,15 +4,6 @@ body {
     padding-top: 50px;
 }
 
-body center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
 .logo {
     position: absolute;
     top: 5px;
