@@ -1,3 +1,12 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
 .boxes {
     display: flex;
     flex-direction: column;
@@ -9,7 +18,7 @@
 
 .name-box {
     width: 25%;
-    /* min-width: 300px; */
+    min-width: 300px;
     max-width: 1000px;
     background-color: lightgrey;
     border: 15px solid gray;
@@ -25,7 +34,7 @@
 
 .about-box {
     width: 25%;
-    /* min-width: 500px; */
+    min-width: 300px;
     max-width: 1000px;
     background-color: lightgrey;
     border: 15px solid gray;
@@ -37,7 +46,7 @@
 
 .contact-box {
     width: 25%;
-    /* min-width: 500px; */
+    min-width: 300px;
     max-width: 1000px;
     background-color: lightgrey;
     border: 15px solid gray;
@@ -64,19 +73,23 @@
 }
 
 @media screen and (max-width: 1200px) {
+    
     .name-box {
-        width: 80%;
+        width: 100%;
         padding-left: 20px;
         padding-right: 20px;
+        font-size: 48px;
     }
     .about-box {
-        width: 80%;
+        width: 100%;
         padding-left: 20px;
         padding-right: 20px;
+        font-size: 32px;
     }
     .contact-box {
-        width: 80%;
+        width: 100%;
         padding-left: 20px;
         padding-right: 20px;
+        font-size: 48px;
     }
 }

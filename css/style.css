@@ -1,7 +1,6 @@
 body {
     background-color:rgb(49, 49, 49);
     font-family: Arial, sans-serif;
-    padding-top: 50px;
 }
 
 .logo {
@@ -53,8 +52,20 @@ nav a:hover {
 .copyright-text {
     color: white;
     position: absolute;
-    top: 95%;
+    top: 98%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 1200px) {
+    nav {
+        height: 100px;
+    }
+    nav a {
+        padding-left: 25px;
+        padding-right: 25px;
+        line-height: 100px;
+        font-size: 32px;
+    }
 }
