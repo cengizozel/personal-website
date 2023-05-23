@@ -5,8 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
             const articles = data.articles; // Access the articles array from the JSON data
             const container = document.querySelector(".articles-container");
+            articles.reverse();
 
             articles.forEach((article) => {
+                if (article.published === false) {
+                    return;
+                }
                 // Create the article elements
                 const articleElement = document.createElement("div");
                 articleElement.classList.add("article"); // Add the article class

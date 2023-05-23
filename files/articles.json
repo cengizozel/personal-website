@@ -4,9 +4,18 @@
         {
             "id": "1",
             "title": "Introduction",
-            "description": "This is an introduction",
-            "publishedDate": "2023-05-20",
-            "link": "article_1.html"
+            "description": "Unearthing the Possibilities of AI, A Personal Endeavor",
+            "publishedDate": "2023-05-23",
+            "link": "article_1.html",
+            "published": true
+        },
+        {
+            "id": "2",
+            "title": "Next",
+            "description": "What's Next?",
+            "publishedDate": "2023-05-24",
+            "link": "article_2.html",
+            "published": false
         }
     ]
 }
