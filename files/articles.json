@@ -15,7 +15,7 @@
             "description": "What's Next?",
             "publishedDate": "2023-05-24",
             "link": "article_2.html",
-            "published": false
+            "published": true
         }
     ]
 }

@@ -1,19 +1,19 @@
 console.log("articles.js loaded");
 document.addEventListener("DOMContentLoaded", function () {
     fetch("../files/articles.json")
-        .then((response) => response.json()) // Parse the response as JSON
+        .then((response) => response.json())
         .then((data) => {
-            const articles = data.articles; // Access the articles array from the JSON data
+            const articles = data.articles;
             const container = document.querySelector(".articles-container");
             articles.reverse();
 
-            articles.forEach((article) => {
+            articles.forEach((article, index) => {
                 if (article.published === false) {
                     return;
                 }
                 // Create the article elements
                 const articleElement = document.createElement("div");
-                articleElement.classList.add("article"); // Add the article class
+                articleElement.classList.add("article");
 
                 const titleElement = document.createElement("div");
                 titleElement.classList.add("article-title");
@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     article.publishedDate +
                     "</time>";
 
-                // Append the elements to the article container
                 titleElement.appendChild(linkElement);
                 articleElement.appendChild(titleElement);
                 articleElement.appendChild(descriptionElement);
                 articleElement.appendChild(publishedDateElement);
                 container.appendChild(articleElement);
             });
+
         })
         .catch((error) => {
             console.error("Error loading articles:", error);
