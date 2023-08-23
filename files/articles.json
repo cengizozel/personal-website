@@ -13,9 +13,9 @@
             "id": "2",
             "title": "Next",
             "description": "What's Next?",
-            "publishedDate": "2023-05-24",
+            "publishedDate": "2023-08-22",
             "link": "article_2.html",
-            "published": true
+            "published": false
         }
     ]
 }

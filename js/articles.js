@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
             const articles = data.articles;
-            const container = document.querySelector(".articles-container");
+            const container = document.getElementById("article-list");
             articles.reverse();
 
             articles.forEach((article, index) => {
@@ -15,6 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 const articleElement = document.createElement("div");
                 articleElement.classList.add("article");
 
+                const publishedDateElement = document.createElement("div");
+                publishedDateElement.classList.add("article-date");
+                publishedDateElement.innerHTML =
+                    "<time datetime='" +
+                    article.publishedDate +
+                    "'>" +
+                    article.publishedDate +
+                    "</time>";
+
                 const titleElement = document.createElement("div");
                 titleElement.classList.add("article-title");
 
@@ -22,21 +31,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 linkElement.href = "articles/" + article.link;
                 linkElement.textContent = article.title;
 
-                const descriptionElement = document.createElement("p");
+                const descriptionElement = document.createElement("div");
+                descriptionElement.classList.add("article-description");
                 descriptionElement.textContent = article.description;
 
-                const publishedDateElement = document.createElement("p");
-                publishedDateElement.innerHTML =
-                    "Published on <time datetime='" +
-                    article.publishedDate +
-                    "'>" +
-                    article.publishedDate +
-                    "</time>";
-
+                // Date
+                articleElement.appendChild(publishedDateElement);
+                // Title
                 titleElement.appendChild(linkElement);
                 articleElement.appendChild(titleElement);
+                // Description
                 articleElement.appendChild(descriptionElement);
-                articleElement.appendChild(publishedDateElement);
                 container.appendChild(articleElement);
             });
 

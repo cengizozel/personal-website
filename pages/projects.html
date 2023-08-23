@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/projects.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
-    <title>Cengiz Ozel</title>
+    <title>Projects</title>
 </head>
 
 <body>
     <div id="container">
 
         <div id="profile">
-            <a href="index.html">
+            <a href="../index.html">
                 <img id="profile-picture" src="../files/img/profile.png" alt="Profile Picture">
             </a>
 
@@ -26,9 +26,9 @@
             <h3 style="margin-top: 0.25vh; color: gray;">Researcher</h3>
 
             <h3 style="margin-top: 1.5vh;">
-                <a href="pages/articles.html">Articles</a> |
-                <a href="pages/projects.html">Projects</a> |
-                <a href="files/Cengiz Resume.pdf">Resume</a>
+                <a href="articles.html">Articles</a> |
+                <a href="projects.html">Projects</a> |
+                <a href="../files/Cengiz Resume.pdf">Resume</a>
             </h3>
 
             <div id="contact" style="margin-top: 2vh;">
@@ -47,19 +47,25 @@
         </div>
 
         <div id="page-content">
-            <div id="bio">
-                <p>With a BS in Computer Science from the University of Rochester, I am currently involved in research
-                    at the <a href="https://roc-hci.com" id="hyperlink" target="_blank">Rochester Human-Computer Interaction Lab</a>, focusing on areas such as Deep Learning, Computer
-                    Vision, and Natural Language Processing among others. My interest in AI spans from its theoretical
-                    foundations to its practical applications in solving real-world problems.<br><br>
+            <div class="project">
+                <a href="https://arxiv.org/abs/2308.03022">
+                    <img src="../files/img/projects/project_1_thumbnail.png" alt="Project 1">
+                    <div class="project-title">SAPIEN</div>
+                    <div class="project-description">SAPIEN: Affective Virtual Agents Powered by Large Language Models</div>
+                </a>
+            </div>
 
-                    I am in the process of developing software that holds the potential to emerge as a future startup.
-                    As I gear up to pursue a Master's degree in Computer Science at Georgia Tech, I continue to explore
-                    and understand the expansive capabilities of AI and its multifaceted applications.</p>
+            <div class="project">
+                <a href="https://youtu.be/ouM6LCV6owM">
+                    <img src="../files/img/projects/project_2_thumbnail.png" alt="Project 1">
+                    <div class="project-title">Hi5</div>
+                    <div class="project-description">Hi5🖐️: Hand Pose Estimation with Zero Human Annotation</div>
+                </a>
             </div>
         </div>
-
     </div>
+    <script src="../js/projects.js"></script>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
