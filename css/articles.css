@@ -22,3 +22,20 @@
     font-size: 1.25rem;
     margin-bottom: 2rem;
 }
+
+/* DARK MODE */
+body.dark .article-date {
+    color: #f5f5f5;
+}
+
+body.dark .article-title a {
+    color: #f5f5f5;
+}
+
+body.dark .article-title a:hover {
+    color: #008cff;
+}
+
+body.dark .article-description {
+    color: #f5f5f5;
+}
