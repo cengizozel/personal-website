@@ -4,16 +4,16 @@
         {
             "id": "1",
             "title": "Introduction",
-            "description": "Unearthing the Possibilities of AI, A Personal Endeavor",
+            "description": "Examining the AI Landscape",
             "publishedDate": "2023-05-23",
             "link": "article_1.html",
             "published": true
         },
         {
             "id": "2",
-            "title": "Next",
-            "description": "What's Next?",
-            "publishedDate": "2023-08-22",
+            "title": "MSCS: My Admission Experience",
+            "description": "Looking back at the 2 years leading up to my admission to the Master's program at Georgia Tech",
+            "publishedDate": "2023-08-23",
             "link": "article_2.html",
             "published": false
         }
