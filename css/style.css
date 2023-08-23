@@ -1,3 +1,10 @@
+:root {
+    --light-color: #f5f5f5;
+    --dark-color: #333;
+    --link-color: #008cff;
+    --link-color-hover: #006dc7;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +13,7 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: var(--light-color);
 }
 
 /* CHECKBOX */
@@ -29,15 +36,15 @@ body {
 }
 
 .checkbox-label .moon {
-    color: #f5f5f5;
+    color: var(--light-color);
 }
 
 .checkbox-label .sun {
-    color: #f5f5f5;
+    color: var(--light-color);
 }
 
 .checkbox-label .ball {
-    background-color: #fff;
+    background-color: var(--light-color);
     width: 22px;
     height: 22px;
     position: absolute;
@@ -94,7 +101,7 @@ body {
 }
 
 #profile-picture:hover {
-    border: 3px solid #006dc7;
+    border: 3px solid var(--link-color-hover);
 }
 
 #profile-picture img {
@@ -103,7 +110,7 @@ body {
 }
 
 #hyperlink {
-    color: #008cff;
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -131,7 +138,7 @@ h3 a {
 }
 
 h3 a:hover {
-    color: #008cff;
+    color: var(--link-color-hover);
 }
 
 footer {
@@ -140,8 +147,7 @@ footer {
     position: fixed;
     bottom: 0;
     padding: 10px 0;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: var(--light-color);
 }
 
 @media (min-width: 1000px) {
@@ -152,22 +158,27 @@ footer {
 
 /* DARK MODE */
 body.dark {
-    background-color: #333;
-    color: #f5f5f5;
+    background-color: var(--dark-color);
+    color: var(--light-color);
 }
 
 body.dark #profile-picture:hover {
-    border: 3px solid #006dc7;
+    border: 3px solid var(--link-color-hover);
 }
 
 body.dark #under-name {
-    color: #f5f5f5;
+    color: var(--light-color);
 }
 
 body.dark #nav a {
-    color: #f5f5f5;
+    color: var(--light-color);
 }
 
 body.dark #nav a:hover {
     color: #008cff;
+}
+
+body.dark footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
 }
