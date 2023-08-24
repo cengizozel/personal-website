@@ -148,6 +148,7 @@ footer {
     bottom: 0;
     padding: 10px 0;
     background-color: var(--light-color);
+    /* border-top: 1px solid black; */
 }
 
 @media (min-width: 1000px) {
