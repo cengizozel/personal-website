@@ -1,4 +1,3 @@
-console.log("articles.js loaded");
 document.addEventListener("DOMContentLoaded", function () {
     fetch("../files/articles.json")
         .then((response) => response.json())
