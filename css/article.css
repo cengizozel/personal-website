@@ -1,5 +1,4 @@
 body {
-    font-family: Arial, sans-serif;
     line-height: 1.6;
     padding: 50px;
 }
@@ -8,25 +7,22 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    /* background-color: #fff; */
-    /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+    /* border: 1px solid #ddd; */
 }
 
 .article-title {
-    font-size: 24px;
-    color: #333;
+    color: var(--dark-color);
     margin-bottom: 10px;
 }
 
 .article-date  {
+    font-size: 0.85rem;
     color: #666;
-    font-size: 14px;
     margin-bottom: 20px;
 }
 
 .article-content {
-    font-size: 16px;
-    color: #333;
+    color: var(--dark-color);
     margin-bottom: 20px;
 }
 
@@ -34,16 +30,39 @@ body {
     margin-bottom: 10px;
 }
 
-.article-link {
-    color: #333;
+#article-back {
+    color: var(--dark-color);
+    font-weight: bold;
     text-decoration: none;
-    border: 1px solid #333;
-    padding: 10px 15px;
-    display: inline-block;
-    margin-top: 20px;
 }
 
-.article-link:hover {
-    background-color: #333;
-    color: #fff;
+#article-back:hover {
+    color: var(--link-color-hover);
+}
+
+
+/* DARK MODE */
+body.dark {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+body.dark .article-title {
+    color: var(--light-color);
+}
+
+body.dark .article-date {
+    color: #aaa;
+}
+
+body.dark .article-content {
+    color: var(--light-color);
+}
+
+body.dark #article-back {
+    color: var(--light-color);
+}
+
+body.dark #article-back:hover {
+    color: var(--link-color-hover);
 }

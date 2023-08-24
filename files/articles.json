@@ -13,9 +13,9 @@
             "id": "2",
             "title": "MSCS: My Admission Experience",
             "description": "Looking back at the 2 years leading up to my admission to the Master's program at Georgia Tech",
-            "publishedDate": "2023-08-23",
+            "publishedDate": "2023-08-24",
             "link": "article_2.html",
-            "published": false
+            "published": true
         }
     ]
 }

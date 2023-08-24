@@ -60,7 +60,7 @@ body {
     padding: 25px 25px;
     max-width: 750px;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0 auto 25px;
     gap: 50px;
 }
 
