@@ -16,6 +16,14 @@
             "publishedDate": "2023-08-24",
             "link": "article_2.html",
             "published": true
+        },
+        {
+            "id": "3",
+            "title": "Releasing My Python Library: LogiDrivePy",
+            "description": "Challenges and outcomes from developing a Python library with no prior experience",
+            "publishedDate": "2023-09-01",
+            "link": "article_3.html",
+            "published": false
         }
     ]
 }
