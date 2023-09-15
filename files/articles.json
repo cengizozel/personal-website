@@ -19,6 +19,14 @@
         },
         {
             "id": "3",
+            "title": "Exploring ACII 2023 at MIT: A First-hand Perspective",
+            "description": "Reflecting on my inspiring experience at the Affective Computing conference in Boston",
+            "publishedDate": "2023-09-14",
+            "link": "article_3.html",
+            "published": true
+        },
+        {
+            "id": "4",
             "title": "Releasing My Python Library: LogiDrivePy",
             "description": "Challenges and outcomes from developing a Python library with no prior experience",
             "publishedDate": "2023-09-01",
