@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../files/img/favicon/favicon.ico">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/article.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    
+    <title>Releasing My Python Library: LogiDrivePy</title>
+</head>
+<body>        
+    <div class="article">
+        <h2 class="article-title">Releasing My Python Library: LogiDrivePy</h2>
+        <p class="article-date">Published on December 9, 2023</p>
+
+        <div class="article-content">
+        <p>
+            When I first started programming, I quickly learned the power and efficiency of using libraries to enhance my coding experience. In the realm of Python programming, there seemed to be a library for everything: NumPy offered vectorized array calculations, Matplotlib enabled data visualization, Pygame was used for game development, PyTorch for building machine learning models, OpenCV for computer vision tasks, NLTK for natural language processing, PyAutoGUI and Selenium for automation tasks, and Tkinter for creating user interfaces. The list goes on. Each of these libraries provided access to specialized tools and functionalities tailored for specific tasks. Reflecting on this vast array of available resources, it made me think that creating my own library might be an absurd plan, potentially redundant and inefficient given the rich ecosystem already in place. As my programming experience progressed, I realized the usefulness of niche and even obscure libraries to fulfill my project requirements.
+            <br><br>
+            One such instance occurred during my research, where I required a library to facilitate webcam face streaming for Unreal Engine's MetaHuman characters. I discovered <a href="https://github.com/JimWest/PyLiveLinkFace" id="hyperlink" target="_blank">PyLiveLinkFace</a> on GitHub, which enabled real-time facial expression transfer from webcam input to the MetaHuman characters. This experience made me realize the immense power and potential of open source libraries created by individuals or small teams to meet the needs of a larger developer community.
+            <br><br>
+            This revelation altered my approach to coding. Whenever I created a helper file for use in multiple projects, I began to ponder if that code could be reimplemented or reused for a broader set of use cases that could benefit more people. This shift in thinking materialized when I embarked on a personal project to collect training data for a self-driving machine learning model, utilizing the BeamNG.drive Python library. To develop a realistic model, I aimed to control the car's steering wheel rotation programmatically rather than relying on keyboard controls.
+            <br><br>
+            Unfortunately, the existing libraries did not provide this functionality, so I started diving deeper into game development techniques to figure out how games achieve steering wheel control. After some research, I discovered a Unity-based C# SDK that offered this capability. Inspired by my desire to code in Python, I decided to develop a Python module that would bridge the gap between Logitech steering wheels and Python scripts.
+            <br><br>
+            Thus, <a href="https://pypi.org/project/logidrivepy/" id="hyperlink" target="_blank">LogiDrivePy</a> was born.
+            <br><br>
+            The development process was a learning experience from the start. I familiarized myself with standard versioning practices, distinguishing between beta and alpha versions and determining which numbers should represent specific features or changes. To ensure the module was accessible to others, I adhered to the MIT license and prepared the necessary documentation for publication on PyPI, the Python Package Index.
+            <br><br>
+            Testing and debugging on different computers was crucial for ensuring compatibility and addressing potential issues. An interesting development occurred when a Global Senior Automotive Solutions Architect at AWS posted an issue on GitHub related to my module. The issue was resolved quickly, which was a significant moment for me as it underscored the extent of my module's reach and its potential impact. As of now, LogiDrivePy has 10 stars on GitHub, and I am excited to see the varied purposes for which people will utilize the module.
+            <br><br>
+            The release of LogiDrivePy has reinforced my belief in the importance of open-source contributions. This experience has taught me that small projects can impact the developer community. Moving forward, I look forward to contributing to the open-source world, developing useful tools, and embracing collaboration, learning, and innovation through shared knowledge and expertise.
+        </p>
+        </div>
+
+        <a href="../../pages/articles.html" id="article-back">Go back</a>
+    </div>
+        
+    <footer>
+        <small class="copyright-text">Copyright &copy; 2023 Cengiz Ozel</small>
+    </footer>
+
+    <script src="../../js/article.js"></script>
+</body>
+
+</html>
