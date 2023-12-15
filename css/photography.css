@@ -1,0 +1,37 @@
+#photo-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.photo-item {
+    width: calc(33% - 20px);
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Optional */
+    padding: 10px;
+    text-align: center;
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional */
+}
+
+.photo-description {
+    margin-top: 10px;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 800px) {
+    .photo-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 500px) {
+    .photo-item {
+        width: 100%;
+    }
+}
