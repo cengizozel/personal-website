@@ -1,0 +1,50 @@
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../files/img/favicon/favicon.ico">
+    
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/project.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    
+    <title>Deep Reinforcement Learning for Brawlhalla</title>
+</head>
+<body>        
+    <div class="project">
+        <h2 class="project-title">Deep Reinforcement Learning for Brawlhalla</h2>
+        <p class="project-type">Personal Project</p>
+
+        <div class="project-content">
+        <p>
+            This project revolves around developing a deep reinforcement learning model for the video game "Brawlhalla". The game operates in a dynamic, fast-paced, 2D platform fighting game environment that requires strategic real-time decision-making. My primary goal was to construct an AI agent that could understand and navigate the gameplay as proficiently as humans do, using complex methodologies of reinforcement learning and convolutional neural networks.
+            <br><br>
+            The crux of the project was to capture and decode real-time game state data effectively. This data, in the form of screenshots, served as a means for the AI agent to comprehend the virtual environment. Each screenshot was downscaled to a fixed size, greyscaled, and then normalized to reduce computation load. The processed set of preceding 5 frames was then put into the designed model, termed 'BrawlNet', a convolutional neural network outfitted specifically for understanding motion and action consequences.
+            <br><br>
+            'BrawlNet' accepts stacked grayscale images as inputs, processes them through multiple convolutional layers to extract meaningful data and interpret game dynamics. Each layer consists of an increasing number of filters for detailed and comprehensive learning of attributes from the game's state images. Following the processing, an output layer generates 21 distinct potential actions corresponding to distinct game controls such as movement and attack options.
+            <br><br>
+            Adapting to a constant learning curve, the RL algorithm I implemented is a variant of policy gradient methods. The choice of this method was primarily driven by the necessity for the model to make decisions in a continuous action space, learning from delayed rewards. The AI agent received feedback from the reward function based on various in-game events like knockouts, damage taken or dealt, and falls.
+            <br><br>
+            Upon testing the model for numerous episodes, the AI showed gradual improvement in understanding the gameplay dynamics, adapting to playing styles, evading attacks, and targeting opponents. This project, however, came with its own set of challenges. Developing a nuanced understanding of temporal decision-making proved difficult, and the real-time processing of the decision-making, coupled with game state interpretation, was computationally expensive.
+            <br><br>
+            The project foregrounds potential future work, including integrating recurrent neural networks to enhance temporal understanding, experimenting with advanced RL algorithms like Proximal Policy Optimization, and ongoing adjustments of the model's hyperparameters based on performance metrics.
+            <br><br>
+            While challenging on many fronts, this project solidifies a significant stride toward the application of deep reinforcement learning in intricate real-time game settings. Despite certain limitations, it has demonstrated promising progress in developing sophisticated AI gaming agents.
+        </p>
+        </div>
+
+        <a href="../../pages/projects.html" id="project-back">Go back</a>
+    </div>
+
+    <footer>
+        <small class="copyright-text">Copyright &copy; 2023 Cengiz Ozel</small>
+    </footer>
+
+    <script src="../../js/project.js"></script>
+</body>
+
+</html>

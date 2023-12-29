@@ -1,0 +1,56 @@
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../files/img/favicon/favicon.ico">
+    
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/project.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    
+    <title>Hi5</title>
+</head>
+<body>        
+    <div class="project">
+        <h2 class="project-title">Hi5</h2>
+        <p class="project-type">Developed at the Rochester Human-Computer Interaction Lab</p>
+
+        <div class="project-content">
+        <p>
+            The Hi5 project stemmed from the need to advance technology for Parkinson's disease screening. Our research team focused on designing an AI-driven tool that automated this screening process, ensuring that people, especially older demographics, could easily use it. Our primary task involved the users tapping their finger in front of a webcam, prompting us to tackle challenges related to low-quality webcams, poor lighting, and improper hand positioning.
+            <br><br>
+            For effective hand pose estimation, we initially applied an existing model - Google Mediapipe. However, we observed its limitations in accurately capturing coordinates when the hand was outside the webcam frame or in low-light conditions. This led us to conceive the novel project Hi5, a synthetically generated hand dataset with pixel-perfect annotations, aiming for more robust tracking of hand positions and movements.
+            <br><br>
+            The process of crafting an accurate, diverse, and versatile dataset for AI modeling is often confronted with significant time and financial constraints. Traditional methods typically involve possessing substantial budgets to employ human labelers who painstakingly identify and annotate each point of interest. The Hi5 project signifies a breakthrough in this regard, leveraging technology to generate a synthetic dataset that bypasses these limitations.
+            <br><br>
+            Our methodology included the use of a Leap Motion controller, which enabled us to map custom gestures derived from prominent Parkinson's disease and hand pose estimation research - 'Approach to the Exam for Parkinson's Disease' and 'InterHand2.6M: A Dataset and Baseline for 3D Interacting Hand Pose Estimation from a Single RGB Image'. To increase the diversity and representativeness of our dataset, we crafted 12 different 3D hand models, factoring in gender and six significant skin tones based on ITA values. 
+            <br><br>
+            The 3D models were placed against 100+ HDRI backdrops, with variations in exposure levels to capture diverse lighting conditions. A camera within the Unity scene, positioned at random angles and distances, captured these setups. While creating this comprehensive pipeline, I was responsible for transforming our original CSV dataset into COCO JSON format compatible with our HRNet architecture. 
+            <br><br>
+            The culmination of these efforts resulted in Hi5 - an unlimited generator of unique hand images, capable of creating approximately 500,000 images daily. A task generally considered expensive and time-consuming became both cost-effective and efficient, with the cost reduced to mere electricity charges for running the system and the process speed increased to just a few hours.
+            <br><br>
+            Recognizing the necessity of first localizing the hands in the captured footage, we built hand detection models using the University of Michigan's Fouhey Lab's '100 days of hand' dataset. We then further refined our hand detection methods using Faster R-CNN and YOLOv7, which served to identify bounding boxes, targeting only these regions for hand pose estimation.
+            <br><br>
+            We delved deeper into dataset creation, using our custom Unity-based computer vision pipeline developed using C# and Python. At that stage, Leap Motion Controller was deemed a slight bottleneck, as it struggled to capture complex gestures with many overlapping fingers. Tackling this challenge led to an unexpected detour - I assumed the role of a computer animator, manually creating complex and varied hand gestures. It not only facilitated capturing complex gestures accurately but also brought a Pixar-like novelty to the task.
+            <br><br>
+            With the pipeline in place, HRNet's architecture was trained on this synthetic dataset. An additional task involved converting the original CSV dataset to COCO JSON format compatible with HRNet. Subsequently, the emergence of the VitPose paper led us to train an improved model using VitPose, culminating in achieving a Percentage of Correct Keypoints (PCK) of 96.08%.
+            <br><br>
+            Months of iterative refining of our dataset and pipeline led to successful tracking of fingers, even when hands were partially or wholly leaving the frame. However, we also identified limitations that opened new avenues for future exploration. Although our work didn't surpass the current state-of-the-art due to the domain gap between 'in-the-wild' environments and synthetic environments, we confirmed synthetic data's efficacy. The Hi5 project highlights the strides made in advancing hand pose estimation research, delivering a foundation for using synthetic data in niches where data scarcity is a prominent concern.
+        </p>
+        </div>
+
+        <a href="../../pages/projects.html" id="project-back">Go back</a>
+    </div>
+
+    <footer>
+        <small class="copyright-text">Copyright &copy; 2023 Cengiz Ozel</small>
+    </footer>
+
+    <script src="../../js/project.js"></script>
+</body>
+
+</html>
