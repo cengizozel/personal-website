@@ -1,0 +1,1 @@
+document.querySelector('footer').innerHTML = '<small class="copyright-text">Copyright &copy; 2026 Cengiz Ozel</small>';
