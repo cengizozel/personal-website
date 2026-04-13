@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 titleElement.classList.add("article-title");
 
                 const linkElement = document.createElement("a");
-                linkElement.href = "articles/" + article.link;
+                linkElement.href = "articles/article.html?id=" + article.id;
                 linkElement.textContent = article.title;
 
                 const descriptionElement = document.createElement("div");
