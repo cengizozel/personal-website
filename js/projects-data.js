@@ -1,9 +1,6 @@
 const projectsData = [
     {
         id: 1,
-        title: "SAPIEN",
-        type: "Developed at the Rochester Human-Computer Interaction Lab",
-        thumbnail: "../../files/img/projects/project_1_thumbnail.png",
         content: `
         <p>
             Related paper: <a href="https://arxiv.org/abs/2308.03022" id="hyperlink" target="_blank">SAPIEN: Affective Virtual Agents Powered by Large Language Models</a>
@@ -28,12 +25,9 @@ const projectsData = [
     },
     {
         id: 2,
-        title: "Hi5",
-        type: "Developed at the Rochester Human-Computer Interaction Lab",
-        thumbnail: "../../files/img/projects/project_2_thumbnail.png",
         content: `
         <p>
-            Related paper: Hi5 ✋: 2D Hand Pose Estimation with Zero Human Annotation
+            Related paper: <a href="https://arxiv.org/abs/2406.03599" id="hyperlink" target="_blank">Hi5 ✋: Synthetic Data for Inclusive, Robust, Hand Pose Estimation</a>
             <h3>Introduction</h3>
             Hi5 is a synthetic hand dataset with pixel-perfect coordinates, created in a game engine, designed specifically for accurate pose estimation. This project was my very first undertaking when I joined the Rochester Human-Computer Interaction Lab. At the time, the team was developing a Parkinson's symptom screening tool website to make neurological assessments more accessible to the elderly and economically disadvantaged, providing a platform to guide them towards the right resources. One of the key tasks in the screening process was a motor test, requiring users to perform specific hand movements, such as finger tapping, to detect potential hand tremors. Given that older individuals often struggle with technology, their hands might go off-webcam or be in low-light conditions, causing Google's Mediapipe model for hand pose estimation to fail. This challenge led to the creation of Hi5, aiming to overcome these limitations and ensure robust hand pose tracking.
             <br><br>
@@ -61,9 +55,6 @@ const projectsData = [
     },
     {
         id: 3,
-        title: "Past World Navigator",
-        type: "Personal Project",
-        thumbnail: "../../files/img/projects/project_3_thumbnail.png",
         content: `
         <p>
             Feel free to contact me for beta access.
@@ -97,9 +88,6 @@ const projectsData = [
     },
     {
         id: 4,
-        title: "BrawlNet - Deep Reinforcement Learning for Brawlhalla",
-        type: "Personal Project",
-        thumbnail: "../../files/img/projects/project_4_thumbnail.png",
         content: `
         <p>
             <h3>Introduction</h3>

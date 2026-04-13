@@ -1,8 +1,6 @@
 const articlesData = [
     {
         id: 1,
-        title: "Introduction",
-        date: "Published on May 23, 2023",
         content: `
         <p>
             Hello there,
@@ -26,8 +24,6 @@ const articlesData = [
     },
     {
         id: 2,
-        title: "MSCS: My Admission Experience",
-        date: "Published on August 24, 2023",
         content: `
         <p>
             It seems that the bar for education has been getting raised over the past centuries. In the 1800s, any obedient person who was physically capable could become a factory worker while any form of education was a privilege. In the 1900s, a high school diploma was enough to get a job and support a family. By the 2000s, a bachelor's degree had become the minimum requirement for employment. Over the last decade, a graduate degree has established itself as the new standard.
@@ -47,8 +43,6 @@ const articlesData = [
     },
     {
         id: 3,
-        title: "Exploring ACII 2023 at MIT: A First-hand Perspective",
-        date: "Published on September 14, 2023",
         content: `
         <p>
             For over a year, I have been part of research involving an online learning platform, <a href="https://arxiv.org/abs/2308.03022" id="hyperlink" target="_blank">SAPIEN</a>, that creates diverse and emotionally responsive virtual agents offering a highly personalized interaction experience in various domains and providing actionable feedback. I was fortunate enough to have this work featured in the demo track of the 2023 International Conference on <a href="https://acii-conf.net/2023/" id="hyperlink" target="_blank">Affective Computing and Intelligent Interaction</a> (ACII) at MIT this week. The entire trip to Boston, including the flight, conference fee, in-city transport, and food expenses, was generously covered by the department. I was eager to observe what work other researchers in the field have been conducting, and the whole experience made me critically reflect upon myself as a researcher and think about my future endeavors.
@@ -80,8 +74,6 @@ const articlesData = [
     },
     {
         id: 4,
-        title: "Releasing My Python Library: LogiDrivePy",
-        date: "Published on December 9, 2023",
         content: `
         <p>
             When I first started programming, I quickly learned the power and efficiency of using libraries to enhance my coding experience. In the realm of Python programming, there seemed to be a library for everything: NumPy offered vectorized array calculations, Matplotlib enabled data visualization, Pygame was used for game development, PyTorch for building machine learning models, OpenCV for computer vision tasks, NLTK for natural language processing, PyAutoGUI and Selenium for automation tasks, and Tkinter for creating user interfaces. The list goes on. Each of these libraries provided access to specialized tools and functionalities tailored for specific tasks. Reflecting on this vast array of available resources, it made me think that creating my own library might be an absurd plan, potentially redundant and inefficient given the rich ecosystem already in place. As my programming experience progressed, I realized the usefulness of niche and even obscure libraries to fulfill my project requirements.
