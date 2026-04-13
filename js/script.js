@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (checkbox.checked === true) {
         ballStyle.transform = 'translateX(24px)';
-        occupation.textContent = "MS Student";
+        occupation.textContent = "Researcher";
     } else {
         ballStyle.transform = 'translateX(0)';
-        occupation.textContent = "Researcher";
+        occupation.textContent = "AI Engineer";
     }
 
     function changeTheme() {
@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function changeOccupation() {
         if (currentTheme === 'dark') {
-            occupation.textContent = "MS Student";
-        } else {
             occupation.textContent = "Researcher";
+        } else {
+            occupation.textContent = "AI Engineer";
         }
     }
 
