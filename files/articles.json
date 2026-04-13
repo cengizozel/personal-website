@@ -35,10 +35,9 @@
         },
         {
             "id": "5",
-            "title": "NA",
-            "description": "NA",
-            "publishedDate": "2023-12-09",
-            "link": "NA.html",
+            "title": "My Georgia Tech MSCS Experience",
+            "description": "A course-by-course look at my two years in Georgia Tech's MSCS program",
+            "publishedDate": "2026-04-13",
             "published": false
         }
     ]

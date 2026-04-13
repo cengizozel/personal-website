@@ -92,5 +92,56 @@ const articlesData = [
             <br><br>
             The release of LogiDrivePy has reinforced my belief in the importance of open-source contributions. This experience has taught me that small projects can impact the developer community. Moving forward, I look forward to contributing to the open-source world, developing useful tools, and embracing collaboration, learning, and innovation through shared knowledge and expertise.
         </p>`
+    },
+    {
+        id: 5,
+        content: `
+        <p>
+            Intro paragraph here.
+            <br><br>
+
+            <h3>CS 6750 - Human-Computer Interaction (A) — Fall 2023</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 8803 - ST: Global Entrepreneurship (A) — Fall 2023</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 6601 - Artificial Intelligence (A) — Spring 2024</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 7646 - Machine Learning for Trading (A) — Spring 2024</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 6795 - Intro to Cognitive Science (A) — Fall 2024</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 6603 - AI, Ethics, and Society (A) — Fall 2024</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 6250 - Computer Networks (A) — Spring 2025</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 6300 - Software Development Process (A) — Spring 2025</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>CS 7637 - Knowledge-Based AI (A) — Summer 2025</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>MGT 6311 - Digital Marketing (A) — Summer 2025</h3>
+            Reflection here.
+            <br><br>
+
+            <h3>Conclusion</h3>
+            Conclusion paragraph here.
+        </p>`
     }
 ];
