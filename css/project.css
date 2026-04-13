@@ -32,12 +32,18 @@
 
 #project-back {
     color: var(--dark-color);
-    font-weight: bold;
     text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, gap 0.2s ease;
 }
 
 #project-back:hover {
-    color: var(--link-color-hover);
+    opacity: 1;
+    gap: 8px;
 }
 
 
@@ -61,8 +67,4 @@ body.dark .project-content {
 
 body.dark #project-back {
     color: var(--light-color);
-}
-
-body.dark #project-back:hover {
-    color: var(--link-color-hover);
 }
