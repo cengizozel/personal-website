@@ -1,6 +1,10 @@
 const articlesData = [
     {
         id: 1,
+        title: "Introduction",
+        description: "Examining the AI Landscape",
+        publishedDate: "2023-05-23",
+        published: true,
         content: `
         <p>
             Hello there,
@@ -24,6 +28,10 @@ const articlesData = [
     },
     {
         id: 2,
+        title: "MSCS: My Admission Experience",
+        description: "Looking back at the 2 years leading up to my admission to the Master's program at Georgia Tech",
+        publishedDate: "2023-08-24",
+        published: true,
         content: `
         <p>
             It seems that the bar for education has been getting raised over the past centuries. In the 1800s, any obedient person who was physically capable could become a factory worker while any form of education was a privilege. In the 1900s, a high school diploma was enough to get a job and support a family. By the 2000s, a bachelor's degree had become the minimum requirement for employment. Over the last decade, a graduate degree has established itself as the new standard.
@@ -43,9 +51,13 @@ const articlesData = [
     },
     {
         id: 3,
+        title: "Exploring ACII 2023 at MIT: A First-hand Perspective",
+        description: "Reflecting on my inspiring experience at the Affective Computing conference in Boston",
+        publishedDate: "2023-09-14",
+        published: true,
         content: `
         <p>
-            For over a year, I have been part of research involving an online learning platform, <a href="https://arxiv.org/abs/2308.03022" id="hyperlink" target="_blank">SAPIEN</a>, that creates diverse and emotionally responsive virtual agents offering a highly personalized interaction experience in various domains and providing actionable feedback. I was fortunate enough to have this work featured in the demo track of the 2023 International Conference on <a href="https://acii-conf.net/2023/" id="hyperlink" target="_blank">Affective Computing and Intelligent Interaction</a> (ACII) at MIT this week. The entire trip to Boston, including the flight, conference fee, in-city transport, and food expenses, was generously covered by the department. I was eager to observe what work other researchers in the field have been conducting, and the whole experience made me critically reflect upon myself as a researcher and think about my future endeavors.
+            For over a year, I have been part of research involving an online learning platform, <a href="https://arxiv.org/abs/2308.03022" class="hyperlink" target="_blank">SAPIEN</a>, that creates diverse and emotionally responsive virtual agents offering a highly personalized interaction experience in various domains and providing actionable feedback. I was fortunate enough to have this work featured in the demo track of the 2023 International Conference on <a href="https://acii-conf.net/2023/" class="hyperlink" target="_blank">Affective Computing and Intelligent Interaction</a> (ACII) at MIT this week. The entire trip to Boston, including the flight, conference fee, in-city transport, and food expenses, was generously covered by the department. I was eager to observe what work other researchers in the field have been conducting, and the whole experience made me critically reflect upon myself as a researcher and think about my future endeavors.
             <br><br>
             <h3>Day 1: Saturday, September 9</h3>
             The flight was on a Sunday, and I wanted to take full advantage of my time there by doing my assignments early, which led me to stay awake for nearly the 30 hours leading up to my flight. I made it to the airport on time, however, the flight got delayed several times for 3 hours. I turned the delay into an opportunity, using the time to catch some much-needed sleep while hoping the flight wouldn't get canceled due to weather conditions. I made it to Boston and arrived at the Airbnb at around 8:30 PM. I was exhausted, but I had to get some work done before the next day. I was able to get a good night's sleep and woke up early to get ready for the conference.
@@ -69,22 +81,26 @@ const articlesData = [
             <br><br>
             The ACII conference was not only a refreshing experience but also an eye-opening one that marks a landmark in my research career. Everything I have done between June 2022 and now came full circle. I initially began with the straightforward task of superimposing an image onto a background using OpenCV. Gradually, I took on more complex responsibilities in various projects. Eventually, I started to supervise and mentor new undergraduates, culminating in the completion of our work and publication of a paper. Ultimately reaching a convention where everyone shared a comparable work background and experiences, and now I have the opportunity to share my work and start anew. Of course my starting point is much more advanced this time. Despite the ups and downs I had over the year, there was never a moment when I considered giving up, and I can finally say with full certainty that I enjoy what I do.
             <br><br>
-            My most recent experiences have sparked an interest in me to perhaps consider a doctoral degree, potentially at an esteemed institute such as MIT. Initially, I held a preconceived notion about the challenges and rewards of a career in academia, especially the commitment of several years for comparably lower remuneration. Alluring job prospects at FAANG companies certainly seemed more attractive without the necessity of a PhD. However, my perspective has drastically shifted now. Beyond the apparent, I've discovered the profound gratification of creating something novel and contributing to the world of knowledge (read about my thoughts on this <a href="article.html?id=2" id="hyperlink" target="_blank">here</a>). My time at the ACII conference has played a pivotal role in enhancing my enthusiasm for research and opened wide the door towards newer prospects.
+            My most recent experiences have sparked an interest in me to perhaps consider a doctoral degree, potentially at an esteemed institute such as MIT. Initially, I held a preconceived notion about the challenges and rewards of a career in academia, especially the commitment of several years for comparably lower remuneration. Alluring job prospects at FAANG companies certainly seemed more attractive without the necessity of a PhD. However, my perspective has drastically shifted now. Beyond the apparent, I've discovered the profound gratification of creating something novel and contributing to the world of knowledge (read about my thoughts on this <a href="article.html?id=2" class="hyperlink" target="_blank">here</a>). My time at the ACII conference has played a pivotal role in enhancing my enthusiasm for research and opened wide the door towards newer prospects.
         </p>`
     },
     {
         id: 4,
+        title: "Releasing My Python Library: LogiDrivePy",
+        description: "The process and outcomes of developing a Python library with no prior experience",
+        publishedDate: "2023-12-09",
+        published: true,
         content: `
         <p>
             When I first started programming, I quickly learned the power and efficiency of using libraries to enhance my coding experience. In the realm of Python programming, there seemed to be a library for everything: NumPy offered vectorized array calculations, Matplotlib enabled data visualization, Pygame was used for game development, PyTorch for building machine learning models, OpenCV for computer vision tasks, NLTK for natural language processing, PyAutoGUI and Selenium for automation tasks, and Tkinter for creating user interfaces. The list goes on. Each of these libraries provided access to specialized tools and functionalities tailored for specific tasks. Reflecting on this vast array of available resources, it made me think that creating my own library might be an absurd plan, potentially redundant and inefficient given the rich ecosystem already in place. As my programming experience progressed, I realized the usefulness of niche and even obscure libraries to fulfill my project requirements.
             <br><br>
-            One such instance occurred during my research, where I required a library to facilitate webcam face streaming for Unreal Engine's MetaHuman characters. I discovered <a href="https://github.com/JimWest/PyLiveLinkFace" id="hyperlink" target="_blank">PyLiveLinkFace</a> on GitHub, which enabled real-time facial expression transfer from webcam input to the MetaHuman characters. This experience made me realize the immense power and potential of open source libraries created by individuals or small teams to meet the needs of a larger developer community.
+            One such instance occurred during my research, where I required a library to facilitate webcam face streaming for Unreal Engine's MetaHuman characters. I discovered <a href="https://github.com/JimWest/PyLiveLinkFace" class="hyperlink" target="_blank">PyLiveLinkFace</a> on GitHub, which enabled real-time facial expression transfer from webcam input to the MetaHuman characters. This experience made me realize the immense power and potential of open source libraries created by individuals or small teams to meet the needs of a larger developer community.
             <br><br>
             This revelation altered my approach to coding. Whenever I created a helper file for use in multiple projects, I began to ponder if that code could be reimplemented or reused for a broader set of use cases that could benefit more people. This shift in thinking materialized when I embarked on a personal project to collect training data for a self-driving machine learning model, utilizing the BeamNG.drive Python library. To develop a realistic model, I aimed to control the car's steering wheel rotation programmatically rather than relying on keyboard controls.
             <br><br>
             Unfortunately, the existing libraries did not provide this functionality, so I started diving deeper into game development techniques to figure out how games achieve steering wheel control. After some research, I discovered a Unity-based C# SDK that offered this capability. Inspired by my desire to code in Python, I decided to develop a Python module that would bridge the gap between Logitech steering wheels and Python scripts.
             <br><br>
-            Thus, <a href="https://pypi.org/project/logidrivepy/" id="hyperlink" target="_blank">LogiDrivePy</a> was born.
+            Thus, <a href="https://pypi.org/project/logidrivepy/" class="hyperlink" target="_blank">LogiDrivePy</a> was born.
             <br><br>
             The development process was a learning experience from the start. I familiarized myself with standard versioning practices, distinguishing between beta and alpha versions and determining which numbers should represent specific features or changes. To ensure the module was accessible to others, I adhered to the MIT license and prepared the necessary documentation for publication on PyPI, the Python Package Index.
             <br><br>
@@ -95,6 +111,10 @@ const articlesData = [
     },
     {
         id: 5,
+        title: "My Georgia Tech MSCS Experience",
+        description: "A course-by-course look at my two years in Georgia Tech's MSCS program",
+        publishedDate: "2026-04-13",
+        published: false,
         content: `
         <p>
             Intro paragraph here.

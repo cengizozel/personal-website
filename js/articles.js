@@ -1,51 +1,37 @@
+// Builds the article listing from articlesData (defined in articles-data.js),
+// newest first.
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("../files/articles.json")
-        .then((response) => response.json())
-        .then((data) => {
-            const articles = data.articles;
-            const container = document.getElementById("article-list");
-            articles.reverse();
+    const container = document.getElementById("article-list");
 
-            articles.forEach((article, index) => {
-                if (article.published === false) {
-                    return;
-                }
-                // Create the article elements
-                const articleElement = document.createElement("div");
-                articleElement.classList.add("article");
+    const published = articlesData
+        .filter((article) => article.published)
+        .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 
-                const publishedDateElement = document.createElement("div");
-                publishedDateElement.classList.add("article-date");
-                publishedDateElement.innerHTML =
-                    "<time datetime='" +
-                    article.publishedDate +
-                    "'>" +
-                    article.publishedDate +
-                    "</time>";
+    published.forEach((article) => {
+        const articleElement = document.createElement("div");
+        articleElement.classList.add("article");
 
-                const titleElement = document.createElement("div");
-                titleElement.classList.add("article-title");
+        const dateElement = document.createElement("div");
+        dateElement.classList.add("article-date");
+        const time = document.createElement("time");
+        time.setAttribute("datetime", article.publishedDate);
+        time.textContent = article.publishedDate;
+        dateElement.appendChild(time);
 
-                const linkElement = document.createElement("a");
-                linkElement.href = "articles/article.html?id=" + article.id;
-                linkElement.textContent = article.title;
+        const titleElement = document.createElement("div");
+        titleElement.classList.add("article-title");
+        const link = document.createElement("a");
+        link.href = "articles/article.html?id=" + article.id;
+        link.textContent = article.title;
+        titleElement.appendChild(link);
 
-                const descriptionElement = document.createElement("div");
-                descriptionElement.classList.add("article-description");
-                descriptionElement.textContent = article.description;
+        const descriptionElement = document.createElement("div");
+        descriptionElement.classList.add("article-description");
+        descriptionElement.textContent = article.description;
 
-                // Date
-                articleElement.appendChild(publishedDateElement);
-                // Title
-                titleElement.appendChild(linkElement);
-                articleElement.appendChild(titleElement);
-                // Description
-                articleElement.appendChild(descriptionElement);
-                container.appendChild(articleElement);
-            });
-
-        })
-        .catch((error) => {
-            console.error("Error loading articles:", error);
-        });
+        articleElement.appendChild(dateElement);
+        articleElement.appendChild(titleElement);
+        articleElement.appendChild(descriptionElement);
+        container.appendChild(articleElement);
+    });
 });

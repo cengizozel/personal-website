@@ -1,27 +1,41 @@
 # personal-website
 
 Website where I share my background, projects, and articles about my interests.
+Plain static HTML/CSS/JS — no build step.
 
 ## Structure
 
 - `index.html` - home page
-- `art.html`, `art/` - art section (music, photography)
-- `pages/articles.html` - article listing, built dynamically from `files/articles.json`
-- `pages/projects.html` - project listing, built dynamically from `files/projects.json`
-- `pages/articles/article.html` - single template page for all articles
-- `pages/projects/project.html` - single template page for all projects
+- `pages/articles.html` - article listing, built from `js/articles-data.js`
+- `pages/projects.html` - project listing, built from `js/projects-data.js`
+- `pages/articles/article.html` - single template page for all articles (`?id=`)
+- `pages/projects/project.html` - single template page for all projects (`?id=`)
 
 ## Adding Content
 
-**New article:** add metadata to `files/articles.json` and content to `js/articles-data.js`. Set `published: false` until ready, then flip to `true`.
+**New article:** add an object to `js/articles-data.js` with `id`, `title`,
+`description`, `publishedDate` (`YYYY-MM-DD`), `published`, and `content`. Set
+`published: false` until ready, then flip to `true`.
 
-**New project:** add metadata to `files/projects.json` and content to `js/projects-data.js`.
+**New project:** add an object to `js/projects-data.js` with `id`, `title`,
+`type`, `thumbnail`, `description`, `published`, and `content`, and drop the
+thumbnail image in `files/img/projects/`.
 
 ## JS
 
-- `js/script.js` - theme toggle and occupation text for pages with a sidebar
-- `js/articles.js` - builds the article listing from JSON
-- `js/projects.js` - builds the project listing from JSON
-- `js/article-loader.js` - loads the correct article into the template page via `?id=`
-- `js/project-loader.js` - loads the correct project into the template page via `?id=`
+- `js/sidebar.js` - injects the shared profile sidebar and owns the theme toggle
 - `js/footer.js` - injects the copyright footer on every page
+- `js/articles-data.js` / `js/projects-data.js` - the article/project data
+- `js/articles.js` / `js/projects.js` - build the listing pages
+- `js/article-loader.js` / `js/project-loader.js` - load one item into the
+  template page via `?id=`
+
+## Running locally
+
+Serve from the repo root (the sidebar uses root-absolute paths):
+
+```
+python3 -m http.server 8000
+```
+
+Then open <http://localhost:8000/>.

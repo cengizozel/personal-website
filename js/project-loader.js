@@ -1,29 +1,19 @@
+// Loads a single project into the template page from projectsData, keyed by ?id=.
 document.addEventListener('DOMContentLoaded', function () {
-    let currentTheme = localStorage.getItem('theme') || 'light';
-    document.body.className = currentTheme;
+    const id = parseInt(new URLSearchParams(window.location.search).get('id'), 10);
+    const project = projectsData.find((p) => p.id === id);
 
-    const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get('id'));
-    const projectData = projectsData.find(p => p.id === id);
-
-    if (!projectData) {
+    if (!project) {
         document.querySelector('.project-title').textContent = 'Project not found';
         return;
     }
 
-    fetch('../../files/projects.json')
-        .then(response => response.json())
-        .then(data => {
-            const meta = data.projects.find(p => parseInt(p.id) === id);
-            const title = meta ? meta.title : '';
-            const type = meta ? meta.type : '';
-            const thumbnail = meta ? '../../files/img/projects/' + meta.thumbnail : '';
+    const thumbnail = document.querySelector('.project-thumbnail');
 
-            document.title = title;
-            document.querySelector('.project-title').textContent = title;
-            document.querySelector('.project-type').textContent = type;
-            document.querySelector('.project-thumbnail').src = thumbnail;
-            document.querySelector('.project-thumbnail').alt = title;
-            document.querySelector('.project-content').innerHTML = projectData.content;
-        });
+    document.title = project.title;
+    document.querySelector('.project-title').textContent = project.title;
+    document.querySelector('.project-type').textContent = project.type;
+    thumbnail.src = '../../files/img/projects/' + project.thumbnail;
+    thumbnail.alt = project.title;
+    document.querySelector('.project-content').innerHTML = project.content;
 });

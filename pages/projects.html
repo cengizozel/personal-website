@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../files/img/favicon/favicon.ico">
+
+    <title>Projects</title>
+    <meta name="description" content="Projects by Cengiz Ozel spanning AI research, computer vision, reinforcement learning, and 3D engines.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects — Cengiz Ozel">
+    <meta property="og:description" content="Projects by Cengiz Ozel spanning AI research, computer vision, reinforcement learning, and 3D engines.">
+    <meta property="og:url" content="https://www.cengizozel.com/pages/projects.html">
+    <meta property="og:image" content="https://www.cengizozel.com/files/img/profile.png">
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/projects.css">
@@ -12,69 +21,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-
-    <title>Projects</title>
 </head>
 
 <body>
+    <script>document.body.className = localStorage.getItem('theme') || 'light';</script>
+
     <div id="container">
-
-        <div id="profile">
-            <a href="../index.html">
-                <img id="profile-picture" src="../files/img/profile.png" alt="Profile Picture">
-            </a>
-
-            <h1>Cengiz Ozel</h1>
-
-            <div id="under-name">
-                <h3 id="occupation" style="margin-top: 0.5vh; margin-bottom: 0.84vh;">Researcher</h3>
-                <div>
-                    <input type="checkbox" class="checkbox" id="checkbox">
-                    <label for="checkbox" class="checkbox-label">
-                        <ion-icon name="moon" class="moon"></ion-icon>
-                        <ion-icon name="sunny" class="sun"></ion-icon>
-                        <span class="ball"></span>
-                    </label>
-                </div>
-            </div>
-
-            <div id="nav">
-                <h3 style="margin-top: 1vh;">
-                    <a href="../pages/articles.html">Articles</a> |
-                    <a href="../pages/projects.html">Projects</a> |
-                    <a href="../files/Cengiz Resume.pdf">Resume</a>
-                </h3>
-            </div>
-
-            <div id="contact" style="margin-top: 2vh;">
-                <a href="https://www.linkedin.com/in/cengiz-ozel/" target="_blank">
-                    <ion-icon name="logo-linkedin" class="contact-icon" alt="LinkedIn"></ion-icon>
-                </a>
-
-                <a href="https://github.com/cengizozel" target="_blank">
-                    <ion-icon name="logo-github" class="contact-icon" alt="GitHub"></ion-icon>
-                </a>
-
-                <a href="https://scholar.google.com/citations?user=f0nD3j8AAAAJ" target="_blank">
-                    <ion-icon name="school" class="contact-icon" alt="Google Scholar"></ion-icon>
-                </a>
-            </div>
-        </div>
+        <div id="profile"></div>
 
         <div id="page-content">
             <div id="project-list"></div>
         </div>
     </div>
-    </div>
-    
+
     <footer></footer>
 
-    <script src="../js/script.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/projects-data.js"></script>
     <script src="../js/projects.js"></script>
     <script src="../js/footer.js"></script>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
