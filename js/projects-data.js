@@ -33,11 +33,11 @@ const projectsData = [
         title: "Hi5",
         type: "Developed at the Rochester Human-Computer Interaction Lab",
         thumbnail: "project_2_thumbnail.png",
-        description: "Hi5 ✋: Hand Pose Estimation with Zero Human Annotation",
+        description: "Hi5: Synthetic Data for Inclusive, Robust, Hand Pose Estimation",
         published: true,
         content: `
         <p>
-            Related paper: <a href="https://arxiv.org/abs/2406.03599" class="hyperlink" target="_blank">Hi5 ✋: Synthetic Data for Inclusive, Robust, Hand Pose Estimation</a>
+            Related paper: <a href="https://arxiv.org/abs/2406.03599" class="hyperlink" target="_blank">Hi5: Synthetic Data for Inclusive, Robust, Hand Pose Estimation</a>
             <h3>Introduction</h3>
             Hi5 is a synthetic hand dataset with pixel-perfect coordinates, created in a game engine, designed specifically for accurate pose estimation. This project was my very first undertaking when I joined the Rochester Human-Computer Interaction Lab. At the time, the team was developing a Parkinson's symptom screening tool website to make neurological assessments more accessible to the elderly and economically disadvantaged, providing a platform to guide them towards the right resources. One of the key tasks in the screening process was a motor test, requiring users to perform specific hand movements, such as finger tapping, to detect potential hand tremors. Given that older individuals often struggle with technology, their hands might go off-webcam or be in low-light conditions, causing Google's Mediapipe model for hand pose estimation to fail. This challenge led to the creation of Hi5, aiming to overcome these limitations and ensure robust hand pose tracking.
             <br><br>
@@ -99,35 +99,6 @@ const projectsData = [
             <br><br>
             <h3>Conclusion</h3>
             Past World Navigator represents an innovative approach to exploring and understanding history through an immersive 3D platform that facilitates temporal and spatial travel. By integrating procedural generation, comprehensive data collection, and advanced technologies such as VR and AI-driven 3D modeling, the platform offers a unique intersection of education and interactive engagement. The iterative development process, informed by user feedback and a commitment to historical accuracy, ensures the project's continual enhancement. As the development progresses, the objective is to broaden the temporal and spatial scope of the exploration, optimize the user interface, and rigorously assess the platform's educational efficacy. Ultimately, Past World Navigator aspires to become a valuable tool for both educational purposes and historical research, providing users with an in-depth and dynamic means of engaging with the past.
-        </p>`
-    },
-    {
-        id: 4,
-        title: "BrawlNet - Deep RL for Brawlhalla",
-        type: "Personal Project",
-        thumbnail: "project_4_thumbnail.png",
-        description: "Using Proximal Policy Optimization, a reinforcement learning technique, to train a deep neural network to play Brawlhalla",
-        published: true,
-        content: `
-        <p>
-            <h3>Introduction</h3>
-            BrawlNet is a deep reinforcement learning model that is aimed to be capable of playing the video game "Brawlhalla" with proficiency comparable to human players. This work originated from my enjoyment of the game, which I frequently played with a friend who is often better at it than me. I wondered if I could train an AI to play the game and beat him as a harmless prank, with no intention of using the AI in online lobbies. "Brawlhalla" operates in a dynamic, fast-paced, 2D platform fighting game environment that requires strategic real-time decision-making. My primary goal was to construct an AI agent that could understand and navigate the gameplay as proficiently as humans do, using reinforcement learning and convolutional neural networks.
-            <br><br>
-            <h3>Initial Approach</h3>
-            The initial idea was to create a synthetic image dataset where I randomly placed a player character on a random location of a map with random health values. This dataset would facilitate the training of a game state detector model capable of assessing real game screenshots. Subsequently, this detector would enable the training of a second AI that would watch Brawlhalla championship videos to learn top-level gameplay. This approach would have been simpler with real-time mouse input data from users, but such data is typically absent in professional gameplay videos, necessitating inferences based on the kinematic motions of characters. Recognizing the complexity of this approach, I decided to change my strategy.
-            <br><br>
-            <h3>Model Design</h3>
-            The core of the project involved capturing and decoding real-time game state data effectively. This data, in the form of screenshots, served as a means for the AI agent to comprehend the virtual environment. Each screenshot was downscaled to a fixed size, greyscaled, and then normalized to reduce computation load. The processed set of preceding five frames was then input into the designed model, termed 'BrawlNet', a convolutional neural network specifically outfitted for understanding motion and action consequences. To facilitate faster training, the game's tick speed was increased 20 times, allowing the AI to process and learn from game states more efficiently.
-            <br><br>
-            BrawlNet accepts stacked grayscale images as inputs, processes them through multiple convolutional layers to extract meaningful data and interpret game dynamics. Each layer consists of an increasing number of filters for detailed and comprehensive learning of attributes from the game's state images. Following the processing, an output layer generates 21 distinct potential actions corresponding to distinct game controls such as movement and attack options.
-            <br><br>
-            Adapting to a constant learning curve, the RL algorithm is a variant of policy gradient methods. The choice of this method was primarily driven by the necessity for the model to make decisions in a continuous action space, learning from delayed rewards. The AI agent received feedback from the reward function based on various in-game events like knockouts, damage taken or dealt, and falls.
-            <br><br>
-            <h3>Testing and Challenges</h3>
-            Upon testing the model for numerous episodes, the AI showed gradual improvement in understanding the gameplay dynamics, adapting to playing styles, evading attacks, and targeting opponents. However, after 8 hours of training, the agent was only slightly better, indicating that further improvements were needed. One of the next goals is to initially train the model using my own gameplay, providing a quick-start understanding of actions that yield high rewards and those that result in negative rewards. After this initial phase, the AI will continue to train on its own to further accelerate learning. Additionally, another approach to be tested is increasing the game tick speed even further and parallelizing the training process to expedite learning and enhance the AI's performance.
-            <br><br>
-            <h3>Conclusion</h3>
-            The project foregrounds potential future work, including integrating recurrent neural networks to enhance temporal understanding, experimenting with advanced RL algorithms like Proximal Policy Optimization, and ongoing adjustments of the model's hyperparameters based on performance metrics. While challenging on many fronts, this project solidifies a significant stride toward the application of deep reinforcement learning in intricate real-time game settings. Despite certain limitations, it has demonstrated promising progress in developing sophisticated AI gaming agents.
         </p>`
     }
 ];
