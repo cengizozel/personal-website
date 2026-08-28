@@ -1,32 +1,5 @@
 const articlesData = [
     {
-        id: 1,
-        title: "Introduction",
-        description: "Examining the AI Landscape",
-        publishedDate: "2023-05-23",
-        published: true,
-        content: `
-        <p>
-            Hello there,
-            <br><br>
-            I'm Cengiz, and welcome to this introduction that marks the beginning of my documented exploration into the world of computer science, with a distinct emphasis on artificial intelligence.
-            <br><br>
-            My fascination with computers traces back to almost 20 years ago when I first interacted with a webcam. This early experience sparked an interest in me and made me grow with an enthusiasm in all forms of interactive technology. This eventually resulted in me pursuing computer science during my high school years.
-            <br><br>
-            In the beginning, I wanted to explore various areas of computing. This led me to study several programming languages and delve into fields such as cybersecurity, virtual reality, digital signal processing, and Raspberry Pi.
-            <br><br>
-            After graduation, I spent a year studying AI in-depth. I used resources like Coursera, textbooks, academic papers, and YouTube to learn everything, from basics such as linear regression to complex topics like transformer models. This focused learning period reinforced my interest in AI and highlighted the importance of keeping up with new developments in this fast-moving field.
-            <br><br>
-            This website was created as a professional hub linking to my work profiles such as GitHub and LinkedIn. It also initially included an Articles section for sharing my experiences and findings, but I didn't get around to writing anything until now.
-            <br><br>
-            Some articles will detail my past experiences, highlighting my projects and major learning steps while others will continuously report my discoveries in the interesting field of AI.
-            <br><br>
-            I hope these articles will inspire and educate others interested in AI while also providing a point of intersection where we can exchange and share ideas.
-            <br><br>
-            Thank you for reading.
-        </p>`
-    },
-    {
         id: 2,
         title: "MSCS: My Admission Experience",
         description: "Looking back at the 2 years leading up to my admission to the Master's program at Georgia Tech",
