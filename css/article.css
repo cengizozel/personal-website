@@ -30,7 +30,7 @@
     margin-bottom: 10px;
 }
 
-#article-back {
+.back-link {
     color: var(--dark-color);
     text-decoration: none;
     font-size: 0.95rem;
@@ -41,9 +41,14 @@
     transition: opacity 0.2s ease, gap 0.2s ease;
 }
 
-#article-back:hover {
+.back-link:hover {
     opacity: 1;
     gap: 8px;
+}
+
+.back-link.top {
+    margin-bottom: 14px;
+    align-self: flex-start;
 }
 
 
@@ -65,7 +70,7 @@ body.dark .article-content {
     color: var(--light-color);
 }
 
-body.dark #article-back {
+body.dark .back-link {
     color: var(--light-color);
 }
 

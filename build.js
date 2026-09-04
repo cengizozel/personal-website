@@ -9,6 +9,21 @@ const OUT = '_site';
 const SITE_URL = 'https://www.cengizozel.com';
 const STATIC = ['CNAME', 'robots.txt', 'index.html', '404.html', 'css', 'js', 'files'];
 
+// With --lenient (used by dev.js), frontmatter problems become warnings and
+// placeholder values so drafts still render; without it they fail the build.
+const LENIENT = process.argv.includes('--lenient');
+
+function warn(msg) {
+    console.warn(`warn: ${msg}`);
+}
+
+function fallbackValue(dir, file, field) {
+    if (field === 'title') return file;
+    if (field === 'date') return fs.statSync(path.join(dir, file)).mtime.toLocaleDateString('sv');
+    if (field === 'order') return '9999';
+    return 'frontmatter not added';
+}
+
 function escapeHtml(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
@@ -35,20 +50,31 @@ function renderAnnotationsPlain(markdown) {
 function parseMarkdown(dir, file, requiredFields) {
     const raw = fs.readFileSync(path.join(dir, file), 'utf8');
     const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-    if (!match) throw new Error(`${dir}/${file}: missing front matter`);
+    if (!match && !LENIENT) throw new Error(`${dir}/${file}: missing front matter`);
     const meta = {};
-    for (const line of match[1].split('\n')) {
-        const colon = line.indexOf(':');
-        if (colon > 0) meta[line.slice(0, colon).trim()] = line.slice(colon + 1).trim();
+    if (match) {
+        for (const line of match[1].split('\n')) {
+            const colon = line.indexOf(':');
+            if (colon > 0) meta[line.slice(0, colon).trim()] = line.slice(colon + 1).trim();
+        }
+    } else {
+        warn(`${dir}/${file}: missing front matter`);
     }
     for (const field of requiredFields) {
-        if (!meta[field]) throw new Error(`${dir}/${file}: missing "${field}" in front matter`);
+        if (!meta[field]) {
+            if (!LENIENT) throw new Error(`${dir}/${file}: missing "${field}" in front matter`);
+            if (match) warn(`${dir}/${file}: missing "${field}" in front matter`);
+            meta[field] = fallbackValue(dir, file, field);
+        } else if (meta[field] === 'TODO' && !LENIENT) {
+            throw new Error(`${dir}/${file}: "${field}" is still TODO`);
+        }
     }
+    const body = match ? match[2] : raw;
     return {
         slug: file.replace(/\.md$/, ''),
         meta,
-        content: marked.parse(renderAnnotations(match[2])),
-        plainContent: marked.parse(renderAnnotationsPlain(match[2])),
+        content: marked.parse(renderAnnotations(body)),
+        plainContent: marked.parse(renderAnnotationsPlain(body)),
     };
 }
 
@@ -56,6 +82,25 @@ function readCollection(dir, requiredFields) {
     if (!fs.existsSync(dir)) return [];
     return fs.readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => parseMarkdown(dir, f, requiredFields));
 }
+
+const template = (name) => fs.readFileSync(`templates/${name}.html`, 'utf8');
+
+// Parse and validate everything before touching _site/, so a bad source file
+// leaves the previous build in place.
+const articles = readCollection('articles', ['title', 'description', 'date']);
+for (const article of articles) {
+    for (const key of ['date', 'edited']) {
+        if (article.meta[key] && !/^\d{4}-\d{2}-\d{2}$/.test(article.meta[key])) {
+            if (!LENIENT) throw new Error(`${article.slug}: ${key} must be YYYY-MM-DD`);
+            warn(`articles/${article.slug}.md: ${key} must be YYYY-MM-DD`);
+            article.meta[key] = fallbackValue('articles', `${article.slug}.md`, 'date');
+        }
+    }
+}
+articles.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
+
+const projects = readCollection('projects', ['title', 'type', 'thumbnail', 'description', 'order']);
+projects.sort((a, b) => Number(a.meta.order) - Number(b.meta.order));
 
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'pages', 'articles'), { recursive: true });
@@ -65,20 +110,7 @@ for (const entry of STATIC) {
 }
 fs.rmSync(path.join(OUT, 'files', 'img', 'favicon', 'favicon.psd'), { force: true });
 
-const template = (name) => fs.readFileSync(`templates/${name}.html`, 'utf8');
-
 // Articles
-const articles = readCollection('articles', ['title', 'description', 'date']);
-for (const article of articles) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(article.meta.date)) {
-        throw new Error(`${article.slug}: date must be YYYY-MM-DD`);
-    }
-    if (article.meta.edited && !/^\d{4}-\d{2}-\d{2}$/.test(article.meta.edited)) {
-        throw new Error(`${article.slug}: edited must be YYYY-MM-DD`);
-    }
-}
-articles.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
-
 const humanDate = (iso) => new Date(iso + 'T00:00:00').toLocaleDateString('en-US', {
     year: 'numeric', month: 'long', day: 'numeric',
 });
@@ -105,9 +137,6 @@ const articleList = articles.map((article) => `            <div class="article">
 fs.writeFileSync(path.join(OUT, 'pages', 'articles.html'), fill(template('articles'), { list: '\n' + articleList + '\n        ' }));
 
 // Projects
-const projects = readCollection('projects', ['title', 'type', 'thumbnail', 'description', 'order']);
-projects.sort((a, b) => Number(a.meta.order) - Number(b.meta.order));
-
 for (const project of projects) {
     fs.writeFileSync(path.join(OUT, 'pages', 'projects', `${project.slug}.html`), fill(template('project'), {
         title: escapeHtml(project.meta.title),
