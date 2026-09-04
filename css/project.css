@@ -68,3 +68,12 @@ body.dark .project-content {
 body.dark #project-back {
     color: var(--light-color);
 }
+
+.project-content h3 {
+    margin: 20px 0 10px;
+}
+
+.project-content a {
+    color: var(--link-color);
+    text-decoration: none;
+}

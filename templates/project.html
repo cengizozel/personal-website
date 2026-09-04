@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../files/img/favicon/favicon.ico">
 
-    <title>Project</title>
-    <meta name="description" content="A project by Cengiz Ozel.">
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:url" content="{{url}}">
+    <meta property="og:image" content="{{og_image}}">
+
+    <link rel="alternate" type="application/rss+xml" title="Cengiz Ozel" href="/feed.xml">
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/project.css">
@@ -21,20 +29,18 @@
     <script>document.body.className = localStorage.getItem('theme') || 'light';</script>
 
     <div class="project">
-        <h2 class="project-title"></h2>
-        <p class="project-type"></p>
+        <h2 class="project-title">{{title}}</h2>
+        <p class="project-type">{{type}}</p>
 
-        <img class="project-thumbnail" src="" alt=""><br>
+        <img class="project-thumbnail" src="../../files/img/projects/{{thumbnail}}" alt="{{title}}"><br>
 
-        <div class="project-content"></div>
+        <div class="project-content">{{content}}</div>
 
         <a href="../../pages/projects.html" id="project-back">← Go back</a>
     </div>
 
     <footer></footer>
 
-    <script src="../../js/projects-data.js"></script>
-    <script src="../../js/project-loader.js"></script>
     <script src="../../js/footer.js"></script>
 </body>
 
