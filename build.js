@@ -20,6 +20,18 @@ function fill(template, values) {
     });
 }
 
+// {{text||YYYY-MM-DD: note}} marks text with a dated update popover.
+const ANNOTATION = /{{(.+?)\|\|(\d{4}-\d{2}-\d{2}):\s*(.+?)}}/gs;
+
+function renderAnnotations(markdown) {
+    return markdown.replace(ANNOTATION, (_, text, date, note) =>
+        `<span class="annotated" tabindex="0">${text}<span class="annotation"><span class="annotation-date">Revisited ${date}</span>${note}</span></span>`);
+}
+
+function renderAnnotationsPlain(markdown) {
+    return markdown.replace(ANNOTATION, (_, text, date, note) => `${text} [Revisited ${date}: ${note}]`);
+}
+
 function parseMarkdown(dir, file, requiredFields) {
     const raw = fs.readFileSync(path.join(dir, file), 'utf8');
     const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
@@ -32,10 +44,16 @@ function parseMarkdown(dir, file, requiredFields) {
     for (const field of requiredFields) {
         if (!meta[field]) throw new Error(`${dir}/${file}: missing "${field}" in front matter`);
     }
-    return { slug: file.replace(/\.md$/, ''), meta, content: marked.parse(match[2]) };
+    return {
+        slug: file.replace(/\.md$/, ''),
+        meta,
+        content: marked.parse(renderAnnotations(match[2])),
+        plainContent: marked.parse(renderAnnotationsPlain(match[2])),
+    };
 }
 
 function readCollection(dir, requiredFields) {
+    if (!fs.existsSync(dir)) return [];
     return fs.readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => parseMarkdown(dir, f, requiredFields));
 }
 
@@ -54,18 +72,26 @@ for (const article of articles) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(article.meta.date)) {
         throw new Error(`${article.slug}: date must be YYYY-MM-DD`);
     }
+    if (article.meta.edited && !/^\d{4}-\d{2}-\d{2}$/.test(article.meta.edited)) {
+        throw new Error(`${article.slug}: edited must be YYYY-MM-DD`);
+    }
 }
 articles.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
+const humanDate = (iso) => new Date(iso + 'T00:00:00').toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric',
+});
+
 for (const article of articles) {
-    const dateHuman = new Date(article.meta.date + 'T00:00:00').toLocaleDateString('en-US', {
-        year: 'numeric', month: 'long', day: 'numeric',
-    });
+    let dateLine = 'Published on ' + humanDate(article.meta.date);
+    if (article.meta.edited) {
+        dateLine += ' | Edited on ' + humanDate(article.meta.edited);
+    }
     fs.writeFileSync(path.join(OUT, 'pages', 'articles', `${article.slug}.html`), fill(template('article'), {
         title: escapeHtml(article.meta.title),
         description: escapeHtml(article.meta.description),
         url: `${SITE_URL}/pages/articles/${article.slug}.html`,
-        date_human: dateHuman,
+        date_line: dateLine,
         content: article.content,
     }));
 }
@@ -93,7 +119,8 @@ for (const project of projects) {
     }));
 }
 
-const projectList = projects.map((project) => `            <div class="project">
+const projectPlaceholder = `            <div class="project-placeholder">Currently revamping this page. In the meantime, all of my public projects are on <a class="hyperlink" href="https://github.com/cengizozel" target="_blank" rel="noopener">my GitHub</a>.</div>`;
+const projectList = projects.length === 0 ? projectPlaceholder : projects.map((project) => `            <div class="project">
                 <a href="projects/${project.slug}.html">
                     <img src="../files/img/projects/${project.meta.thumbnail}" alt="${escapeHtml(project.meta.title)}">
                     <div class="project-title">${escapeHtml(project.meta.title)}</div>
@@ -109,7 +136,7 @@ const rssItems = articles.map((article) => `        <item>
             <guid>${SITE_URL}/pages/articles/${article.slug}.html</guid>
             <pubDate>${new Date(article.meta.date + 'T00:00:00Z').toUTCString()}</pubDate>
             <description>${escapeHtml(article.meta.description)}</description>
-            <content:encoded><![CDATA[${article.content.replaceAll('href="/', `href="${SITE_URL}/`)}]]></content:encoded>
+            <content:encoded><![CDATA[${article.plainContent.replaceAll('href="/', `href="${SITE_URL}/`)}]]></content:encoded>
         </item>`).join('\n');
 fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -129,7 +156,7 @@ const sitemapUrls = [
     { loc: `${SITE_URL}/` },
     { loc: `${SITE_URL}/pages/articles.html` },
     { loc: `${SITE_URL}/pages/projects.html` },
-    ...articles.map((a) => ({ loc: `${SITE_URL}/pages/articles/${a.slug}.html`, lastmod: a.meta.date })),
+    ...articles.map((a) => ({ loc: `${SITE_URL}/pages/articles/${a.slug}.html`, lastmod: a.meta.edited || a.meta.date })),
     ...projects.map((p) => ({ loc: `${SITE_URL}/pages/projects/${p.slug}.html` })),
 ];
 const sitemap = sitemapUrls.map((u) => `    <url>

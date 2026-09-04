@@ -198,3 +198,58 @@ body.dark footer {
     background-color: var(--dark-color);
     color: var(--light-color);
 }
+
+/* ANNOTATIONS */
+.annotated {
+    position: relative;
+    border-bottom: 1px dashed #999;
+    cursor: pointer;
+}
+
+.annotation {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 6px);
+    z-index: 1;
+    width: min(340px, 80vw);
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: var(--light-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    cursor: auto;
+}
+
+.annotated.open .annotation {
+    display: block;
+}
+
+.annotation-date {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 6px;
+}
+
+body.dark .annotated {
+    border-bottom-color: #777;
+}
+
+body.dark .annotation {
+    background-color: var(--dark-color);
+    border-color: #555;
+}
+/* END ANNOTATIONS */
+
+.page-intro {
+    font-size: 1rem;
+    font-style: italic;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+body.dark .page-intro {
+    color: #aaa;
+}
