@@ -68,4 +68,25 @@ const list = articles.map((article) => `            <div class="article">
             </div>`).join('\n');
 fs.writeFileSync(path.join(OUT, 'pages', 'articles.html'), fill(listingTemplate, { list: '\n' + list + '\n        ' }));
 
-console.log(`Built ${articles.length} articles into ${OUT}/`);
+const rssItems = articles.map((article) => `        <item>
+            <title>${escapeHtml(article.meta.title)}</title>
+            <link>${SITE_URL}/pages/articles/${article.slug}.html</link>
+            <guid>${SITE_URL}/pages/articles/${article.slug}.html</guid>
+            <pubDate>${new Date(article.meta.date + 'T00:00:00Z').toUTCString()}</pubDate>
+            <description>${escapeHtml(article.meta.description)}</description>
+            <content:encoded><![CDATA[${article.content.replaceAll('href="/', `href="${SITE_URL}/`)}]]></content:encoded>
+        </item>`).join('\n');
+fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cengiz Ozel</title>
+        <link>${SITE_URL}</link>
+        <description>Articles by Cengiz Ozel</description>
+        <language>en</language>
+        <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
+${rssItems}
+    </channel>
+</rss>
+`);
+
+console.log(`Built ${articles.length} articles and feed.xml into ${OUT}/`);
