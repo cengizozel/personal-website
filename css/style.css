@@ -270,3 +270,7 @@ body.dark .page-intro {
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
+
+#bio p + p {
+    margin-top: 1em;
+}
