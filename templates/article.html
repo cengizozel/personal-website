@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../files/img/favicon/favicon.ico">
+
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:url" content="{{url}}">
+    <meta property="og:image" content="https://www.cengizozel.com/files/img/profile.png">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/article.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script>document.body.className = localStorage.getItem('theme') || 'light';</script>
+
+    <div class="article">
+        <h2 class="article-title">{{title}}</h2>
+        <p class="article-date">Published on {{date_human}}</p>
+
+        <div class="article-content">{{content}}</div>
+
+        <a href="../../pages/articles.html" id="article-back">← Go back</a>
+    </div>
+
+    <footer></footer>
+
+    <script src="../../js/footer.js"></script>
+</body>
+
+</html>

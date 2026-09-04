@@ -68,3 +68,12 @@ body.dark .article-content {
 body.dark #article-back {
     color: var(--light-color);
 }
+
+.article-content h3 {
+    margin: 20px 0 10px;
+}
+
+.article-content a {
+    color: var(--link-color);
+    text-decoration: none;
+}

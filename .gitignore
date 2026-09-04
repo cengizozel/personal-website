@@ -8,3 +8,10 @@ Thumbs.db
 # Local env
 .env
 .env.local
+
+# Build
+node_modules/
+_site/
+
+# Unpublished writing
+drafts/

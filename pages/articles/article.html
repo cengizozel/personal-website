@@ -3,37 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../files/img/favicon/favicon.ico">
-
-    <title>Article</title>
-    <meta name="description" content="An article by Cengiz Ozel.">
-
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/article.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Articles</title>
+    <script>
+        // Old article URLs used article.html?id=N; send them to the new pages.
+        var slugs = {
+            2: 'mscs-admission-experience',
+            3: 'acii-2023-at-mit',
+            4: 'releasing-logidrivepy'
+        };
+        var id = new URLSearchParams(window.location.search).get('id');
+        window.location.replace(slugs[id] ? slugs[id] + '.html' : '../articles.html');
+    </script>
 </head>
 
-<body>
-    <script>document.body.className = localStorage.getItem('theme') || 'light';</script>
-
-    <div class="article">
-        <h2 class="article-title"></h2>
-        <p class="article-date"></p>
-
-        <div class="article-content"></div>
-
-        <a href="../../pages/articles.html" id="article-back">← Go back</a>
-    </div>
-
-    <footer></footer>
-
-    <script src="../../js/articles-data.js"></script>
-    <script src="../../js/article-loader.js"></script>
-    <script src="../../js/footer.js"></script>
-</body>
+<body></body>
 
 </html>
