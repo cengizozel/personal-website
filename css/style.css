@@ -253,3 +253,20 @@ body.dark .annotation {
 body.dark .page-intro {
     color: #aaa;
 }
+
+#notfound {
+    max-width: 750px;
+    margin: 15vh auto 0;
+    padding: 25px;
+    text-align: center;
+}
+
+#notfound h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+#notfound p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}

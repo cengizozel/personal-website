@@ -23,7 +23,7 @@
         <h1>Cengiz Ozel</h1>
 
         <div id="under-name">
-            <h3 id="occupation">Researcher</h3>
+            <h3 id="occupation">AI Researcher</h3>
             <div>
                 <input type="checkbox" class="checkbox" id="checkbox" aria-label="Toggle dark mode">
                 <label for="checkbox" class="checkbox-label">
@@ -49,14 +49,14 @@
         </div>`;
 
     // Theme toggle. Occupation label is intentionally coupled to the theme:
-    // "AI Engineer" in light, "Researcher" in dark.
+    // "Software Engineer" in light, "AI Researcher" in dark.
     const checkbox = document.getElementById('checkbox');
     const occupation = document.getElementById('occupation');
 
     function applyTheme(theme) {
         document.body.className = theme;
         checkbox.checked = theme === 'dark';
-        occupation.textContent = theme === 'dark' ? 'Researcher' : 'AI Engineer';
+        occupation.textContent = theme === 'dark' ? 'AI Researcher' : 'Software Engineer';
     }
 
     applyTheme(localStorage.getItem('theme') || 'light');

@@ -7,7 +7,7 @@ const { marked } = require('marked');
 
 const OUT = '_site';
 const SITE_URL = 'https://www.cengizozel.com';
-const STATIC = ['CNAME', 'robots.txt', 'index.html', 'css', 'js', 'files'];
+const STATIC = ['CNAME', 'robots.txt', 'index.html', '404.html', 'css', 'js', 'files'];
 
 function escapeHtml(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -63,6 +63,7 @@ fs.mkdirSync(path.join(OUT, 'pages', 'projects'), { recursive: true });
 for (const entry of STATIC) {
     fs.cpSync(entry, path.join(OUT, entry), { recursive: true });
 }
+fs.rmSync(path.join(OUT, 'files', 'img', 'favicon', 'favicon.psd'), { force: true });
 
 const template = (name) => fs.readFileSync(`templates/${name}.html`, 'utf8');
 
