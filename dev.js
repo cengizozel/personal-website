@@ -123,11 +123,11 @@ function notify(msg) {
 function frontmatterSnippet(text) {
     const m = text.match(/^(?:drafts\/)?(articles|projects)\/(.+?)\.md: missing/);
     if (!m) return null;
+    const today = new Date().toLocaleDateString('sv');
     const title = m[2].split(/[-_]+/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
     if (m[1] === 'projects') {
-        return `---\ntitle: ${title}\ntype: TODO\nthumbnail: TODO\ndescription: TODO\norder: 99\n---`;
+        return `---\ntitle: ${title}\ntype: TODO\nthumbnail: TODO\ndescription: TODO\norder: 99\ndate: ${today}\n---`;
     }
-    const today = new Date().toLocaleDateString('sv');
     return `---\ntitle: ${title}\ndescription: TODO\ndate: ${today}\n---`;
 }
 

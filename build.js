@@ -100,23 +100,26 @@ const articles = [
     ...readCollection('articles', ['title', 'description', 'date']),
     ...readDrafts(path.join('drafts', 'articles'), ['title', 'description', 'date']),
 ];
-for (const article of articles) {
-    const dir = article.draft ? path.join('drafts', 'articles') : 'articles';
-    for (const key of ['date', 'edited']) {
-        if (article.meta[key] && !/^\d{4}-\d{2}-\d{2}$/.test(article.meta[key])) {
-            if (!LENIENT) throw new Error(`${article.slug}: ${key} must be YYYY-MM-DD`);
-            warn(`${dir}/${article.slug}.md: ${key} must be YYYY-MM-DD`);
-            article.meta[key] = fallbackValue(dir, `${article.slug}.md`, 'date');
-        }
-    }
-}
 articles.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
 const projects = [
-    ...readCollection('projects', ['title', 'type', 'thumbnail', 'description', 'order']),
-    ...readDrafts(path.join('drafts', 'projects'), ['title', 'type', 'thumbnail', 'description', 'order']),
+    ...readCollection('projects', ['title', 'type', 'thumbnail', 'description', 'order', 'date']),
+    ...readDrafts(path.join('drafts', 'projects'), ['title', 'type', 'thumbnail', 'description', 'order', 'date']),
 ];
 projects.sort((a, b) => Number(a.meta.order) - Number(b.meta.order));
+
+for (const [items, name] of [[articles, 'articles'], [projects, 'projects']]) {
+    for (const item of items) {
+        const dir = item.draft ? path.join('drafts', name) : name;
+        for (const key of ['date', 'edited']) {
+            if (item.meta[key] && !/^\d{4}-\d{2}-\d{2}$/.test(item.meta[key])) {
+                if (!LENIENT) throw new Error(`${item.slug}: ${key} must be YYYY-MM-DD`);
+                warn(`${dir}/${item.slug}.md: ${key} must be YYYY-MM-DD`);
+                item.meta[key] = fallbackValue(dir, `${item.slug}.md`, 'date');
+            }
+        }
+    }
+}
 
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'pages', 'articles'), { recursive: true });
@@ -175,21 +178,26 @@ const projectList = projects.length === 0 ? projectPlaceholder : projects.map((p
             </div>`).join('\n');
 fs.writeFileSync(path.join(OUT, 'pages', 'projects.html'), fill(template('projects'), { list: '\n' + projectList + '\n        ' }));
 
-// RSS (articles only)
-const rssItems = articles.map((article) => `        <item>
-            <title>${escapeHtml(article.meta.title)}</title>
-            <link>${SITE_URL}/pages/articles/${article.slug}.html</link>
-            <guid>${SITE_URL}/pages/articles/${article.slug}.html</guid>
-            <pubDate>${new Date(article.meta.date + 'T00:00:00Z').toUTCString()}</pubDate>
-            <description>${escapeHtml(article.meta.description)}</description>
-            <content:encoded><![CDATA[${article.plainContent.replaceAll('href="/', `href="${SITE_URL}/`)}]]></content:encoded>
+// RSS (articles and projects, newest first)
+const feedEntries = [
+    ...articles.map((item) => ({ item, kind: 'articles', category: 'Article' })),
+    ...projects.map((item) => ({ item, kind: 'projects', category: 'Project' })),
+].sort((a, b) => b.item.meta.date.localeCompare(a.item.meta.date));
+const rssItems = feedEntries.map(({ item, kind, category }) => `        <item>
+            <title>${escapeHtml(item.meta.title)}</title>
+            <link>${SITE_URL}/pages/${kind}/${item.slug}.html</link>
+            <guid>${SITE_URL}/pages/${kind}/${item.slug}.html</guid>
+            <category>${category}</category>
+            <pubDate>${new Date(item.meta.date + 'T00:00:00Z').toUTCString()}</pubDate>
+            <description>${escapeHtml(item.meta.description)}</description>
+            <content:encoded><![CDATA[${item.plainContent.replaceAll('href="/', `href="${SITE_URL}/`)}]]></content:encoded>
         </item>`).join('\n');
 fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Cengiz Ozel</title>
         <link>${SITE_URL}</link>
-        <description>Articles by Cengiz Ozel</description>
+        <description>Articles and projects by Cengiz Ozel</description>
         <language>en</language>
         <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
 ${rssItems}
@@ -203,7 +211,7 @@ const sitemapUrls = [
     { loc: `${SITE_URL}/pages/articles.html` },
     { loc: `${SITE_URL}/pages/projects.html` },
     ...articles.map((a) => ({ loc: `${SITE_URL}/pages/articles/${a.slug}.html`, lastmod: a.meta.edited || a.meta.date })),
-    ...projects.map((p) => ({ loc: `${SITE_URL}/pages/projects/${p.slug}.html` })),
+    ...projects.map((p) => ({ loc: `${SITE_URL}/pages/projects/${p.slug}.html`, lastmod: p.meta.edited || p.meta.date })),
 ];
 const sitemap = sitemapUrls.map((u) => `    <url>
         <loc>${u.loc}</loc>${u.lastmod ? `\n        <lastmod>${u.lastmod}</lastmod>` : ''}

@@ -18,8 +18,8 @@ Optional front matter: `edited: YYYY-MM-DD` shows an edited date next to the pub
 
 Revisits: `{{text||YYYY-MM-DD: note}}` in the markdown marks text with a dated popover for later additions of new thinking. RSS shows it as a bracketed note.
 
-Projects are markdown files in `projects/` with front matter (`title`, `type`, `thumbnail`, `description`, `order`), with thumbnails in `files/img/projects/`.
+Projects are markdown files in `projects/` with front matter (`title`, `type`, `thumbnail`, `description`, `order`, `date`), with thumbnails in `files/img/projects/`.
 
 ## How it works
 
-`build.js` renders the markdown and `templates/` into `_site/` (pages, listings, RSS feed, sitemap), which is deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to main.
+`build.js` renders the markdown and `templates/` into `_site/` (pages, listings, RSS feed of articles and projects, sitemap), which is deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to main.
