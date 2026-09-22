@@ -83,23 +83,39 @@ function readCollection(dir, requiredFields) {
     return fs.readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => parseMarkdown(dir, f, requiredFields));
 }
 
+// Dev builds (--lenient) also render drafts/articles/ and drafts/projects/,
+// marked as drafts. Real builds never read drafts/.
+function readDrafts(dir, requiredFields) {
+    if (!LENIENT) return [];
+    return readCollection(dir, requiredFields).map((item) => ({ ...item, draft: true }));
+}
+
+const draftLabel = (item) => (item.draft ? ' (draft)' : '');
+
 const template = (name) => fs.readFileSync(`templates/${name}.html`, 'utf8');
 
 // Parse and validate everything before touching _site/, so a bad source file
 // leaves the previous build in place.
-const articles = readCollection('articles', ['title', 'description', 'date']);
+const articles = [
+    ...readCollection('articles', ['title', 'description', 'date']),
+    ...readDrafts(path.join('drafts', 'articles'), ['title', 'description', 'date']),
+];
 for (const article of articles) {
+    const dir = article.draft ? path.join('drafts', 'articles') : 'articles';
     for (const key of ['date', 'edited']) {
         if (article.meta[key] && !/^\d{4}-\d{2}-\d{2}$/.test(article.meta[key])) {
             if (!LENIENT) throw new Error(`${article.slug}: ${key} must be YYYY-MM-DD`);
-            warn(`articles/${article.slug}.md: ${key} must be YYYY-MM-DD`);
-            article.meta[key] = fallbackValue('articles', `${article.slug}.md`, 'date');
+            warn(`${dir}/${article.slug}.md: ${key} must be YYYY-MM-DD`);
+            article.meta[key] = fallbackValue(dir, `${article.slug}.md`, 'date');
         }
     }
 }
 articles.sort((a, b) => b.meta.date.localeCompare(a.meta.date));
 
-const projects = readCollection('projects', ['title', 'type', 'thumbnail', 'description', 'order']);
+const projects = [
+    ...readCollection('projects', ['title', 'type', 'thumbnail', 'description', 'order']),
+    ...readDrafts(path.join('drafts', 'projects'), ['title', 'type', 'thumbnail', 'description', 'order']),
+];
 projects.sort((a, b) => Number(a.meta.order) - Number(b.meta.order));
 
 fs.rmSync(OUT, { recursive: true, force: true });
@@ -131,7 +147,7 @@ for (const article of articles) {
 
 const articleList = articles.map((article) => `            <div class="article">
                 <div class="article-date"><time datetime="${article.meta.date}">${article.meta.date}</time></div>
-                <div class="article-title"><a href="articles/${article.slug}.html">${escapeHtml(article.meta.title)}</a></div>
+                <div class="article-title"><a href="articles/${article.slug}.html">${escapeHtml(article.meta.title)}${draftLabel(article)}</a></div>
                 <div class="article-description">${escapeHtml(article.meta.description)}</div>
             </div>`).join('\n');
 fs.writeFileSync(path.join(OUT, 'pages', 'articles.html'), fill(template('articles'), { list: '\n' + articleList + '\n        ' }));
@@ -153,7 +169,7 @@ const projectPlaceholder = `            <div class="project-placeholder">Current
 const projectList = projects.length === 0 ? projectPlaceholder : projects.map((project) => `            <div class="project">
                 <a href="projects/${project.slug}.html">
                     <img src="../files/img/projects/${project.meta.thumbnail}" alt="${escapeHtml(project.meta.title)}">
-                    <div class="project-title">${escapeHtml(project.meta.title)}</div>
+                    <div class="project-title">${escapeHtml(project.meta.title)}${draftLabel(project)}</div>
                     <div class="project-description">${escapeHtml(project.meta.description)}</div>
                 </a>
             </div>`).join('\n');

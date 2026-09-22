@@ -12,7 +12,7 @@ date: 2026-01-01
 ---
 ```
 
-Write drafts in `drafts/` (not tracked). Move the file to `articles/` and push to publish.
+Write drafts in `drafts/articles/` and `drafts/projects/` (not tracked by this repo). `npm run dev` serves the site on localhost:8080 with live reload and renders drafts marked "(draft)"; the real build ignores them. Move the file to `articles/` (or `projects/`) and push to publish.
 
 Optional front matter: `edited: YYYY-MM-DD` shows an edited date next to the published date, for silent text adjustments.
 

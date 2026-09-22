@@ -8,7 +8,7 @@ const { execFile } = require('child_process');
 
 const OUT = '_site';
 const PORT = process.env.PORT || 8080;
-const IGNORE = [OUT, 'node_modules', '.git'];
+const IGNORE = [OUT, 'node_modules', '.git', path.join('drafts', '.git')];
 
 const TYPES = {
     '.html': 'text/html; charset=utf-8',
@@ -121,7 +121,7 @@ function notify(msg) {
 // For frontmatter errors, offer a paste-ready template with the title guessed
 // from the filename and today's date filled in.
 function frontmatterSnippet(text) {
-    const m = text.match(/^(articles|projects)\/(.+?)\.md: missing/);
+    const m = text.match(/^(?:drafts\/)?(articles|projects)\/(.+?)\.md: missing/);
     if (!m) return null;
     const title = m[2].split(/[-_]+/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
     if (m[1] === 'projects') {
@@ -150,7 +150,7 @@ function build() {
             if (warns.length) process.stderr.write(stderr);
             const items = [];
             for (const text of warns) {
-                const file = (text.match(/^(articles|projects)\/\S+\.md(?=:)/) || [null])[0];
+                const file = (text.match(/^(?:drafts\/)?((?:articles|projects)\/\S+\.md)(?=:)/) || [null, null])[1];
                 let item = items.find((i) => i.file === file);
                 if (!item) items.push(item = { file, texts: [], snippet: null });
                 item.texts.push(text);
@@ -204,15 +204,41 @@ const server = http.createServer((req, res) => {
     res.end(body);
 });
 
-let debounce;
-fs.watch('.', { recursive: true }, (_, filename) => {
-    if (!filename || IGNORE.some((dir) => filename === dir || filename.startsWith(dir + path.sep))) return;
-    clearTimeout(debounce);
-    debounce = setTimeout(() => {
-        console.log(`Changed: ${filename}`);
+// Poll file mtimes instead of using fs.watch: Node's recursive watcher on
+// Linux stops reporting files that editors save by renaming (nvim, sed -i).
+const EDITOR_TEMP = /(\.sw[a-p]|~|^4913)$/;
+
+function snapshot(dir = '.', out = new Map()) {
+    let entries;
+    try {
+        entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+        return out;
+    }
+    for (const entry of entries) {
+        const rel = path.join(dir, entry.name);
+        if (IGNORE.some((d) => rel === d || rel.startsWith(d + path.sep))) continue;
+        if (entry.isDirectory()) {
+            snapshot(rel, out);
+        } else if (!EDITOR_TEMP.test(entry.name)) {
+            const stat = fs.statSync(rel, { throwIfNoEntry: false });
+            if (stat) out.set(rel, `${stat.mtimeMs}:${stat.size}`);
+        }
+    }
+    return out;
+}
+
+let files = snapshot();
+setInterval(() => {
+    const next = snapshot();
+    const changed = [...next.keys()].filter((f) => next.get(f) !== files.get(f))
+        .concat([...files.keys()].filter((f) => !next.has(f)));
+    files = next;
+    if (changed.length) {
+        console.log(`Changed: ${changed.join(', ')}`);
         build();
-    }, 100);
-});
+    }
+}, 500);
 
 build();
 server.listen(PORT, () => {
