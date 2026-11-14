@@ -36,8 +36,6 @@
 
         <div id="nav">
             <h3>
-                <a href="/pages/articles.html">Articles</a> |
-                <a href="/pages/projects.html">Projects</a> |
                 <a href="/files/cengiz-ozel-resume.pdf" target="_blank" rel="noopener">Resume</a>
             </h3>
         </div>
