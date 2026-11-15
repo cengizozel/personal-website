@@ -35,9 +35,7 @@
         </div>
 
         <div id="nav">
-            <h3>
-                <a href="/files/cengiz-ozel-resume.pdf" target="_blank" rel="noopener">Resume</a>
-            </h3>
+            <a class="btn-outline" href="/files/cengiz-ozel-resume.pdf" target="_blank" rel="noopener">Resume</a>
         </div>
 
         <div id="contact">
